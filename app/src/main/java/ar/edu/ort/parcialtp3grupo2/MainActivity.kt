@@ -14,7 +14,7 @@ import ar.edu.ort.parcialtp3grupo2.ui.navigation.NavGraph
 import androidx.navigation.compose.rememberNavController
 import ar.edu.ort.parcialtp3grupo2.ui.navigation.AppDestination
 import ar.edu.ort.parcialtp3grupo2.ui.navigation.BottomBar
-import ar.edu.ort.parcialtp3grupo2.sections.home.components.MyTopAppBar as TopBar
+import ar.edu.ort.parcialtp3grupo2.ui.components.MyTopAppBar as TopBar
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -20,10 +20,12 @@ import ar.edu.ort.parcialtp3grupo2.sections.explore.components.CategoryCard
 import ar.edu.ort.parcialtp3grupo2.sections.explore.components.SearchInput
 import ar.edu.ort.parcialtp3grupo2.sections.explore.data.Category
 import ar.edu.ort.parcialtp3grupo2.sections.explore.data.CategoryRepository
+import ar.edu.ort.parcialtp3grupo2.sections.home.screens.ShopScreenViewModel
 
 @Composable
 fun FindProductsScreen(innerPadding: PaddingValues) {
     var text by remember { mutableStateOf("") }
+    val viewModel = ExploreScreenViewModel()
 
     Column (
         modifier = Modifier
@@ -43,9 +45,8 @@ fun FindProductsScreen(innerPadding: PaddingValues) {
             userScrollEnabled = true,
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            items(CategoryRepository().getAllData()) { category ->
+            items(viewModel.getAllCategories()) { category ->
                 CategoryCard(color = category.color, title = category.name) {
-
                 }
             }
         }

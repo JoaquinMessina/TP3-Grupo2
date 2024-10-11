@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -19,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.*
 import androidx.compose.ui.graphics.Color
-import androidx.compose.foundation.border
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import ar.edu.ort.parcialtp3grupo2.ui.components.SymbolButton
@@ -27,7 +25,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.navigation.NavController
-import ar.edu.ort.parcialtp3grupo2.sections.find_product.components.CategoryCard
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.Product
 
 
@@ -72,14 +69,6 @@ fun ShopScreen(innerPadding: PaddingValues, navController: NavController) {
             )
     ) {
         AddressName()
-
-        Button(onClick = { navController.navigate("account") }) {
-            Text("Go to Account")
-        }
-        Button(onClick = { navController.navigate("find_products") }) {
-            Text("Go to Find Products")
-        }
-
         Spacer(modifier = Modifier.height(16.dp))
         Banner()
         Spacer(modifier = Modifier.height(16.dp))

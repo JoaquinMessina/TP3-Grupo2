@@ -3,15 +3,20 @@ package ar.edu.ort.parcialtp3grupo2.ui.navigation
 sealed class AppDestination(val route: String, val label: String) {
     object Shop : AppDestination("shop", "Shop")
     object Account : AppDestination("account", "Account")
-    object FindProducts : AppDestination("find_products", "Find Products")
+    object Explore : AppDestination("explore", "Find Products")
+    object Cart : AppDestination("cart", "Cart")
+    object Favourites : AppDestination("favourites", "Favourites")
 
     companion object {
         fun fromRoute(route: String?): AppDestination =
             when (route) {
                 Shop.route -> Shop
                 Account.route -> Account
+                Explore.route -> Explore
+                Cart.route -> Cart
+                Favourites.route -> Favourites
                 null -> Shop  // Default screen
-                else -> throw IllegalArgumentException("Route $route is not recognized.")
+                else -> Shop
             }
     }
 }

@@ -5,43 +5,33 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import ar.edu.ort.parcialtp3grupo2.ui.theme.ParcialTP3Grupo2Theme
+import ar.edu.ort.parcialtp3grupo2.ui.navigation.NavGraph
+import androidx.navigation.compose.rememberNavController
+import ar.edu.ort.parcialtp3grupo2.ui.navigation.AppDestination
+import ar.edu.ort.parcialtp3grupo2.sections.home.components.MyTopAppBar as TopBar
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContent {
+
             ParcialTP3Grupo2Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                val navController = rememberNavController()
+                Scaffold(modifier = Modifier.fillMaxSize(), topBar = {
+                    TopBar(
+                        title = AppDestination.fromRoute(navController.currentDestination?.route).label,
+                        isArrowBack = false
                     )
+                }) { innerPadding ->
+                    NavGraph(navController = navController, innerPadding = innerPadding)
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ParcialTP3Grupo2Theme {
-        Greeting("Android")
-    }
-}

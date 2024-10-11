@@ -20,6 +20,30 @@ class ProductRepository {
                 image = 2,
                 detail = "Fresh and sweet, always a good choice (of course over seven up)"
             ),
+            Product(
+                id = 3,
+                name = "Coca Cola",
+                price = 3000.0,
+                amount = "330ml",
+                image = 2,
+                detail = "The best soda in the world, always a good choice"
+            ),
+            Product(
+                id = 4,
+                name = "Pepsi",
+                price = 3000.0,
+                amount = "330ml",
+                image = 2,
+                detail = "The second best soda in the world, always a good choice"
+            ),
+            Product(
+                id = 5,
+                name = "Fanta",
+                price = 3000.0,
+                amount = "330ml",
+                image = 2,
+                detail = "The third best soda in the world, always a good choice"
+            ),
         )
     }
 

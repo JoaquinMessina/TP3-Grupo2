@@ -31,11 +31,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Switch
 import androidx.compose.material3.VerticalDivider
+import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButton
 
 @Composable
 fun AccountScreen(innerPadding: PaddingValues,navController: NavController) {
@@ -92,7 +95,9 @@ fun AccountScreen(innerPadding: PaddingValues,navController: NavController) {
            Item(icon = "🔗", name = "Help")
            HorizontalDivider(thickness = 1.dp)
            DarkModeItem()
-              HorizontalDivider(thickness = 1.dp)
+           HorizontalDivider(thickness = 1.dp)
+           
+           GreenButton(onClick = { /*TODO*/ }, text ="Log Out", isInverted = true, leftIcon = Icons.AutoMirrored.Filled.ExitToApp)
        }
 
     }

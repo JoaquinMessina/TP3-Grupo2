@@ -27,6 +27,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.navigation.NavController
+import ar.edu.ort.parcialtp3grupo2.sections.find_product.components.CategoryCard
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.Product
 
 
@@ -61,7 +62,7 @@ fun Banner(){
 @Composable
 fun ShopScreen(innerPadding: PaddingValues, navController: NavController) {
     // implement the view model here
-val viewModel = ShopScreenViewModel()
+    val viewModel = ShopScreenViewModel()
 
     Column(
         modifier = Modifier
@@ -71,9 +72,14 @@ val viewModel = ShopScreenViewModel()
             )
     ) {
         AddressName()
+
         Button(onClick = { navController.navigate("account") }) {
             Text("Go to Account")
         }
+        Button(onClick = { navController.navigate("find_products") }) {
+            Text("Go to Find Products")
+        }
+
         Spacer(modifier = Modifier.height(16.dp))
         Banner()
         Spacer(modifier = Modifier.height(16.dp))

@@ -44,9 +44,9 @@ import androidx.compose.ui.unit.sp
 import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.Counter
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.ItemRow
-import ar.edu.ort.parcialtp3grupo2.sections.home.components.MyTopAppBar
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.Product
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButtonRightText
+import ar.edu.ort.parcialtp3grupo2.ui.components.MyTopAppBar
 
 var apple = Product(
     id = 1,

@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,14 +24,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHost
+import androidx.navigation.NavHostController
 import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.GenericTextField
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.PasswordTextField
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.ValidatedTextField
+import ar.edu.ort.parcialtp3grupo2.sections.auth.navigation.AuthDestination
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButton
 
 @Composable
-fun SignUp() {
+fun SignUp(
+    innerPadding: PaddingValues,
+    globalController:NavHostController,
+    authController:NavHostController
+) {
     val scrollState = rememberScrollState()
 
     Box(
@@ -118,24 +126,21 @@ fun SignUp() {
 
 
 
-            GreenButton(onClick = { /*TODO*/ }, text = "Sign Up")
+            GreenButton(onClick = {
+                authController.navigate(AuthDestination.Login.route)
+                                  }, text = "Sign Up")
 
             Row {
                 Text(text = "Already have an account? ",
                     fontWeight = FontWeight.Bold)
 
-                Text(text = "Signup",
-                    modifier = Modifier.clickable {  },
+                Text(text = "Sign in",
+                    modifier = Modifier.clickable {
+                         authController.navigate(AuthDestination.Login.route)                    },
                     color = Color(0xFF53B175))
 
             }
 
         }
     }
-}
-
-@Preview
-@Composable
-fun SignUpPreview() {
-    SignUp()
 }

@@ -4,13 +4,26 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import ar.edu.ort.parcialtp3grupo2.sections.auth.navigation.AuthNavGraph
+import ar.edu.ort.parcialtp3grupo2.sections.auth.screens.Login
 import ar.edu.ort.parcialtp3grupo2.sections.explore.screens.FindProductsScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.account.screens.AccountScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.ShopScreen
 
 @Composable
 fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
-    NavHost(navController = navController, startDestination = AppDestination.Shop.route) {
+    NavHost(navController = navController, startDestination = AppDestination.Auth.route) {
+        composable(AppDestination.Auth.route) {
+            var authNavController = rememberNavController()
+            AuthNavGraph(
+                 authNavController,
+                globalController = navController,
+                innerPadding = innerPadding
+            )
+
+        }
+
         composable(AppDestination.Shop.route) {
            ShopScreen(innerPadding, navController)
         }
@@ -20,5 +33,8 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
         composable(AppDestination.Explore.route) {
             FindProductsScreen(innerPadding = innerPadding)
         }
+
+
     }
+
 }

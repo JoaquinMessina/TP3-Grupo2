@@ -9,6 +9,8 @@ import ar.edu.ort.parcialtp3grupo2.sections.auth.navigation.AuthNavGraph
 import ar.edu.ort.parcialtp3grupo2.sections.auth.screens.Login
 import ar.edu.ort.parcialtp3grupo2.sections.explore.screens.FindProductsScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.account.screens.AccountScreen
+import ar.edu.ort.parcialtp3grupo2.sections.home.screens.MyCartScreen
+import ar.edu.ort.parcialtp3grupo2.sections.home.screens.MyFavoriteScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.ShopScreen
 
 @Composable
@@ -27,6 +29,15 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
         composable(AppDestination.Shop.route) {
            ShopScreen(innerPadding, navController)
         }
+
+        composable(AppDestination.Cart.route) {
+            MyCartScreen()
+        }
+
+        composable(AppDestination.Favourites.route) {
+            MyFavoriteScreen()
+        }
+
         composable(AppDestination.Account.route) {
             AccountScreen(innerPadding, navController)
         }

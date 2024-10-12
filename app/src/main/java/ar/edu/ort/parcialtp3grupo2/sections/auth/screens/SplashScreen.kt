@@ -23,15 +23,16 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.delay
 
 import ar.edu.ort.parcialtp3grupo2.R
+import ar.edu.ort.parcialtp3grupo2.sections.auth.navigation.AuthDestination
 
 @Composable
-fun SplashScreen(/*navController: NavController*/) {
+fun SplashScreen(navController: NavController) {
 
     val scaleAnimation: Animatable<Float, AnimationVector1D> = remember { Animatable(initialValue = 0f) }
 
     AnimationSplashContent(
         scaleAnimation = scaleAnimation,
-        navController = rememberNavController(),
+        navController = navController,
         durationMillisAnimation = 1500,
         delayScreen = 3000L
     )
@@ -63,11 +64,7 @@ fun AnimationSplashContent(
 
         delay(timeMillis = delayScreen)
 
-      /*  navController.navigate(route = DestinationScreen.MainScreenDest.route) {
-            popUpTo(route = DestinationScreen.SplashScreenDest.route) {
-                inclusive = true
-            }
-        }*/
+    navController.navigate(route = AuthDestination.Onboarding.route)
     }
 }
 
@@ -95,10 +92,3 @@ fun DesignSplashScreen(
         }
     }
 }
-
-@Preview
-@Composable
-fun Preview(){
-    SplashScreen()
-}
-

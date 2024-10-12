@@ -18,12 +18,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 
 @Composable
-fun GreenButton(onClick: () -> Unit, text: String) {
+
+fun  GreenButton(onClick: () -> Unit, text: String, leftIcon: ImageVector? = null, isInverted: Boolean = false) {
+
+    val backgroundColor = if (isInverted) Color(0xF2F3F2FF) else Color(0xFF53B175)
+    val contentColor = if (isInverted) Color(0xFF53B175) else Color(0xF2F3F2FF)
+
     Button(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(Color(0xFF53B175)),

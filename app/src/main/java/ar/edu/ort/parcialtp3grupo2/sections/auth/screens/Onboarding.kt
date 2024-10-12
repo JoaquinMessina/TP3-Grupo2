@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -19,13 +20,19 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import ar.edu.ort.parcialtp3grupo2.R
+import ar.edu.ort.parcialtp3grupo2.sections.auth.navigation.AuthDestination
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButton
 
 @Composable
-fun Onbording() {
+fun Onboarding(
+    innerPadding: PaddingValues,
+    authController: NavHostController
+) {
     Box(
         modifier = Modifier
+            .padding(innerPadding)
             .fillMaxSize()
             .background(Color.White)
     ) {
@@ -68,15 +75,10 @@ fun Onbording() {
                 modifier = Modifier.padding(bottom = 8.dp)
 
             )
-            GreenButton(onClick = { /*TODO*/ }, text = "Get Started")
+            GreenButton(onClick = {
+                authController.navigate(AuthDestination.Login.route)
+            }, text = "Get Started")
             Spacer(modifier = Modifier.height(36.dp))
         }
     }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewWelcomeScreen() {
-    Onbording()
 }

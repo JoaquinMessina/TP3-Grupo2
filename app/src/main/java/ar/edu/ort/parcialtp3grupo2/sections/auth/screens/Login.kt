@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,18 +19,24 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.GenericTextField
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.PasswordTextField
+import ar.edu.ort.parcialtp3grupo2.sections.auth.navigation.AuthDestination
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButton
 
 @Composable
-fun Login() {
+fun Login(
+    innerPadding: PaddingValues,
+    authNavhostController: NavHostController,
+    globalNavhostController: NavHostController
+) {
     Box(
         modifier = Modifier
+            .padding(innerPadding)
             .fillMaxSize()
             .background(Color.White)
     ) {
@@ -80,24 +87,19 @@ fun Login() {
                     .padding(16.dp))
 
 
-            GreenButton(onClick = { /*TODO*/ }, text = "Log In")
+            GreenButton(onClick = {
+                 authNavhostController.navigate(AuthDestination.Location.route)            }, text = "Log In")
 
             Row {
                 Text(text = "Don’t have an account? ",
                     fontWeight = FontWeight.Bold)
 
                 Text(text = "Singup",
-                    modifier = Modifier.clickable {  },
+                    modifier = Modifier.clickable {
+                         authNavhostController.navigate(AuthDestination.Register.route)                    },
                     color = Color(0xFF53B175))
-
             }
 
         }
     }
-}
-
-@Preview
-@Composable
-fun LoginPreview() {
-    Login()
 }

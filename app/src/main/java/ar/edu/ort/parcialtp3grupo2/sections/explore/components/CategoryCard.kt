@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.Modifier
@@ -54,7 +55,7 @@ fun CategoryCard(color: Color, title: String, onClick: () -> Unit) {
                 )
             Text(
                 text = title,
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.tertiary,
                 fontSize = 16.sp,
                 lineHeight = 22.sp,
                 fontWeight = FontWeight.Bold,

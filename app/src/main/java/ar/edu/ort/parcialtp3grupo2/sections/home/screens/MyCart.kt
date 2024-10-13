@@ -69,7 +69,7 @@ fun MyCartContent(modifier: Modifier = Modifier) {
             }
         }
         Divider(color = Color.LightGray, thickness = 0.7.dp)
-        GreenButtonRightText(onClick = {}, "Go to Checkout", "$1500")
+        GreenButtonRightText(onClick = {}, text="Go to Checkout", rightText = "$1500")
     }
 }
 

@@ -83,7 +83,6 @@ fun Location(
 
     Box(
         modifier = Modifier
-            .padding(innerPadding)
             .fillMaxSize()
             .background(Color.White)
     ) {

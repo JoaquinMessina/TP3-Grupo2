@@ -26,7 +26,9 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButton
 
 @Composable
@@ -60,7 +62,7 @@ fun AccountScreen(innerPadding: PaddingValues,navController: NavController) {
                 Row {
                     Text(text = "Afsar Hossen", fontWeight = FontWeight.Bold, fontSize = 20.sp)
                 }
-                Text(text = "Imshuvo97@gmail.com", fontWeight = FontWeight.Normal, fontSize = 16.sp, color = Color(0x7C7C7CFF))
+                Text(text = "Imshuvo97@gmail.com", fontWeight = FontWeight.Normal, fontSize = 16.sp, color = MaterialTheme.colorScheme.secondary)
             }
         }
        Column (
@@ -110,7 +112,7 @@ fun Item (icon: String, name: String){
                 .fillMaxWidth(),
         ){
             Text(text = icon, fontWeight = FontWeight.Bold, fontSize = 20.sp)
-            Text(text = name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color.Black)
+            Text(text = name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = MaterialTheme.colorScheme.tertiary)
             Spacer(modifier = Modifier.weight(1f))
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
@@ -135,9 +137,14 @@ fun DarkModeItem (){
                 .fillMaxWidth(),
         ){
             Text(text = "", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-            Text(text = "Dark Mode", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color.Black)
+            Text(text = "Dark Mode", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = MaterialTheme.colorScheme.tertiary)
             Spacer(modifier = Modifier.weight(1f))
-            Switch(checked = true, onCheckedChange = fun(checked: Boolean) {
+            Switch(checked = true, colors = SwitchDefaults.colors(
+                checkedThumbColor = MaterialTheme.colorScheme.primary,
+                checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                uncheckedThumbColor = MaterialTheme.colorScheme.tertiary,
+                uncheckedTrackColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.5f),
+            ), onCheckedChange = fun(checked: Boolean) {
                 // Handle the change
             })
         }

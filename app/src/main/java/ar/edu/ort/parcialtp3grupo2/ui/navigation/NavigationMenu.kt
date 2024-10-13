@@ -18,6 +18,7 @@ import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
@@ -55,8 +56,7 @@ fun BottomBar (
            .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
    ){
        BottomNavigation(
-           contentColor = Color.Black,
-           backgroundColor = Color.White,
+           backgroundColor = MaterialTheme.colorScheme.background,
            elevation = 16.dp,
            modifier = Modifier
                .border(
@@ -72,7 +72,7 @@ fun BottomBar (
        ){
            bottomNavItems.forEach { item ->
                val isSelected = currentRoute == item.route
-               val color =  if(isSelected) Color(0xFF53B175) else Color.Black
+               val color =  if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.tertiary
                BottomNavigationItem(
                    modifier = Modifier.padding(0.dp, 8.dp),
                    icon = { Icon(imageVector = item.icon, contentDescription = item.label,tint = color, modifier = Modifier.size(20.dp)) },

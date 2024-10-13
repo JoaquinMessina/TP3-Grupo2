@@ -26,6 +26,7 @@ import ar.edu.ort.parcialtp3grupo2.ui.components.SymbolButton
 
 @Composable
 fun ProductCard(product: Product) {
+
     Column(
         modifier = Modifier
             .border(BorderStroke(1.dp, Color(0x1A333333)), RoundedCornerShape(32.dp))

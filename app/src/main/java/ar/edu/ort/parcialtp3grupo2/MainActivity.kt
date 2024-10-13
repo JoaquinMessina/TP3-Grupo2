@@ -13,7 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
-import ar.edu.ort.parcialtp3grupo2.ui.theme.ParcialTP3Grupo2Theme
+import ar.edu.ort.parcialtp3grupo2.ui.theme.BrandTheme
 import ar.edu.ort.parcialtp3grupo2.ui.navigation.NavGraph
 import androidx.navigation.compose.rememberNavController
 import ar.edu.ort.parcialtp3grupo2.sections.auth.screens.SplashScreen
@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ParcialTP3Grupo2Theme {
+            BrandTheme {
                 val navController = rememberNavController()
                 val currentBackStackEntry by navController.currentBackStackEntryAsState()
 
@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
                 )
 
                 Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {
-                    var destination = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "")
+                    val destination = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "")
 
                     if(
                         nonBottomBarRoutes.contains(destination.route)
@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
                         }
                     )
                 }, topBar = {
-                    var destination = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "")
+                    val destination = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "")
 
                     if(
                         nonTopBarRoutes.contains(destination.route)

@@ -9,6 +9,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -48,6 +49,7 @@ fun SymbolButton(symbol: ImageVector, isInverted: Boolean = false, onClick: () -
         Icon(
             imageVector = symbol,
             modifier = Modifier.size(32.dp),
+            tint = if (isInverted) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary,
             contentDescription = null,
         )
     }

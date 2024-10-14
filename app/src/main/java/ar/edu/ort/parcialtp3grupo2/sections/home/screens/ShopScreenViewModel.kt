@@ -24,5 +24,13 @@ class ShopScreenViewModel : ViewModel() {
     fun removeProduct(product: Product) {
         products = products - product
     }
+
+    fun getProductById(id: String): Product? {
+        return products.find { it.id == id }
+    }
+
+    fun getFirst(): Product {
+        return productRepository.getAllData()[0]
+    }
 }
 

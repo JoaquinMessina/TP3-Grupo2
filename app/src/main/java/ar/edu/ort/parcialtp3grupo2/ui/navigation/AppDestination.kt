@@ -6,8 +6,9 @@ sealed class AppDestination(val route: String, val label: String) {
     object Explore : AppDestination("explore", "Find Products")
     object Cart : AppDestination("cart", "Cart")
     object Favourites : AppDestination("favourites", "Favourites")
+    object ProductDetail: AppDestination("shop/productDetail", "ProductDetail")
+    object OrderAccepted: AppDestination("orderAccepted", "orderAccepted")
     object Auth : AppDestination("auth", "Auth")
-
     companion object {
         fun fromRoute(route: String?): AppDestination =
             when (route) {

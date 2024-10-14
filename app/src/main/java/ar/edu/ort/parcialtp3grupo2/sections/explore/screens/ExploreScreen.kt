@@ -16,26 +16,37 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.SheetValue
+import androidx.compose.material3.rememberModalBottomSheetState
+import androidx.compose.ui.tooling.preview.Preview
 import ar.edu.ort.parcialtp3grupo2.sections.explore.components.CategoryCard
 import ar.edu.ort.parcialtp3grupo2.sections.explore.components.SearchInput
 import ar.edu.ort.parcialtp3grupo2.sections.explore.data.Category
 import ar.edu.ort.parcialtp3grupo2.sections.explore.data.CategoryRepository
+import ar.edu.ort.parcialtp3grupo2.sections.home.components.FiltersBottomSheet
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.ShopScreenViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FindProductsScreen(innerPadding: PaddingValues) {
     var text by remember { mutableStateOf("") }
     val viewModel = ExploreScreenViewModel()
-
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true )
+    var isSheetopen by remember {
+        mutableStateOf(false)
+    }
     Column (
         modifier = Modifier
             .padding(innerPadding)
             .fillMaxWidth()
     ){
 
-        SearchInput(text = text, onTextChange = fun( newText: String ){
+        SearchInput(text = text,
+            onTextChange = fun( newText: String){
             text = newText
-        })
+        },
+            onClick = { isSheetopen = true })
 
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
@@ -50,6 +61,16 @@ fun FindProductsScreen(innerPadding: PaddingValues) {
                 }
             }
         }
+        if(isSheetopen){
+            FiltersBottomSheet(onDismiss = { isSheetopen = false }, sheetState = sheetState)
+        }
+
     }
 
+}
+
+@Preview
+@Composable
+fun test(){
+    FindProductsScreen(innerPadding = PaddingValues())
 }

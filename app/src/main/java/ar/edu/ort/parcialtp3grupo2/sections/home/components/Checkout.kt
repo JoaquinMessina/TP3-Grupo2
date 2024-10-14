@@ -1,8 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
 package ar.edu.ort.parcialtp3grupo2.sections.home.components
-
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,6 +16,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -34,10 +33,13 @@ import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButtonRightText
 
 @Composable
 fun CheckoutBottomSheet(
-    onDismiss: () -> Unit //futura logica de quite
+    onDismiss: () -> Unit,
+    sheetState: SheetState
 ) {
     ModalBottomSheet(
-        onDismissRequest = { onDismiss() }
+        sheetState = sheetState,
+        onDismissRequest = { onDismiss() },
+        dragHandle = {false}
     ) {
         CheckboxBottomSheetContent(onDismiss)
     }

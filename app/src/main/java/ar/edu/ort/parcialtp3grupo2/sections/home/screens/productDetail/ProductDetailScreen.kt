@@ -34,12 +34,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.Counter
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.ItemRow
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.Product
+import ar.edu.ort.parcialtp3grupo2.sections.home.screens.ShopScreenViewModel
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButtonRightText
 
 
@@ -47,7 +49,9 @@ import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButtonRightText
 
 
 @Composable
-fun ProductDetailScreen(innerPadding: PaddingValues, prod: Product) {
+fun ProductDetailScreen(innerPadding: PaddingValues, id: String) {
+    val viewModel = ShopScreenViewModel()
+    var prod = viewModel.getProductById(id)?: viewModel.getFirst()
     var counter by remember { mutableStateOf(0) }
     Column(modifier = Modifier
         .padding(innerPadding)
@@ -186,3 +190,8 @@ fun FavIcon() {
     )
 }
 
+@Preview (showBackground = true)
+@Composable
+fun test(){
+    ProductDetailScreen(innerPadding = PaddingValues(), "3")
+}

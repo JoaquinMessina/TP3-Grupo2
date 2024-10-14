@@ -1,5 +1,6 @@
 package ar.edu.ort.parcialtp3grupo2.sections.home.account.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -29,6 +30,8 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
+import androidx.compose.ui.res.painterResource
+import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButton
 
 @Composable
@@ -52,8 +55,8 @@ fun AccountScreen(innerPadding: PaddingValues,navController: NavController) {
                 modifier = Modifier
                     .size(65.dp)
                     .clip(RoundedCornerShape((27.dp)))
-                    .background(Color.Red)
             ) {
+                Image(painter = painterResource(id = R.drawable.profile), contentDescription = null)
             }
 
             Spacer(modifier = Modifier.size(18.dp))

@@ -1,5 +1,6 @@
 package ar.edu.ort.parcialtp3grupo2
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,18 +13,23 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.compose.currentBackStackEntryAsState
 import ar.edu.ort.parcialtp3grupo2.ui.theme.ParcialTP3Grupo2Theme
 import ar.edu.ort.parcialtp3grupo2.ui.navigation.NavGraph
 import androidx.navigation.compose.rememberNavController
+import ar.edu.ort.parcialtp3grupo2.sections.auth.data.RetrofitServiceFactory
+import ar.edu.ort.parcialtp3grupo2.sections.auth.data.User
 import ar.edu.ort.parcialtp3grupo2.sections.auth.screens.SplashScreen
 import ar.edu.ort.parcialtp3grupo2.ui.navigation.AppDestination
 import ar.edu.ort.parcialtp3grupo2.ui.navigation.BottomBar
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.time.delay
 import java.time.Duration
 import ar.edu.ort.parcialtp3grupo2.ui.components.MyTopAppBar as TopBar
 
 class MainActivity : ComponentActivity() {
+    @SuppressLint("CoroutineCreationDuringComposition")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

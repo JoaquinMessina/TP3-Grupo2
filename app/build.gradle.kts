@@ -50,6 +50,8 @@ android {
 }
 
 dependencies {
+
+    implementation(libs.converter.gson)
     val nav_version = "2.8.2"
 
     implementation(libs.androidx.core.ktx)
@@ -62,6 +64,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material)
     implementation(libs.androidx.material.icons.extended)
+    implementation(libs.retrofit)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

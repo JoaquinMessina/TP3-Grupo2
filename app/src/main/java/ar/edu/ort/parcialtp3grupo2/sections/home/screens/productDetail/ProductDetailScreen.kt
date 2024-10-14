@@ -1,11 +1,11 @@
 package ar.edu.ort.parcialtp3grupo2.sections.home.screens.productDetail
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,10 +20,8 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowRight
-import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,9 +31,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -45,34 +41,21 @@ import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.Counter
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.ItemRow
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.Product
+import ar.edu.ort.parcialtp3grupo2.sections.home.screens.ShopScreenViewModel
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButtonRightText
-import ar.edu.ort.parcialtp3grupo2.ui.components.MyTopAppBar
 
-var apple = Product(
-    id = 1,
-    name = "Natural Red Apple",
-    price = 4.99,
-    amount = "1kg",
-    image = R.drawable.apple,
-    detail = "Apples are Nutritious. Apples May Be Good For Weight Loss. Apples May Be Good For Your Heart. As Part Of A Healtful And Varied Diet"
-)
-
-@Composable
-fun ProductDetailScreen(){
-    Scaffold(
-        topBar = {MyTopAppBar(title = "Product Detail", isArrowBack = true)}
-    ) { innerpadding ->
-        ProductDetailContent(modifier = Modifier.padding(innerpadding), apple)
-    }
-}
 
 
 
 
 @Composable
-fun ProductDetailContent(modifier: Modifier = Modifier, prod: Product) {
+fun ProductDetailScreen(innerPadding: PaddingValues, id: String) {
+    val viewModel = ShopScreenViewModel()
+    var prod = viewModel.getProductById(id)?: viewModel.getFirst()
     var counter by remember { mutableStateOf(0) }
-    Column(modifier = modifier.fillMaxSize()) {
+    Column(modifier = Modifier
+        .padding(innerPadding)
+        .fillMaxSize()) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -101,7 +84,7 @@ fun ProductDetailContent(modifier: Modifier = Modifier, prod: Product) {
         ProductDetailBody(prod = prod, counter, onDecrement ={ if (counter > 0) counter-- }, onIncrement = {counter++} )
 
     }
-        GreenButtonRightText(onClick = { }, "Add to Basket" )
+        GreenButtonRightText(onClick = { }, text= "Add to Basket" )
     }
 
 }
@@ -207,8 +190,8 @@ fun FavIcon() {
     )
 }
 
-@Preview(showBackground = true)
+@Preview (showBackground = true)
 @Composable
-fun PreviewProductDetail() {
-    ProductDetailScreen()
+fun test(){
+    ProductDetailScreen(innerPadding = PaddingValues(), "3")
 }

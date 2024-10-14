@@ -14,9 +14,6 @@ import ar.edu.ort.parcialtp3grupo2.sections.home.components.ProductSection
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.ShopBanner
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.AddressName
 
-
-
-
 @Composable
 fun ShopScreen(innerPadding: PaddingValues, navController: NavController) {
     // implement the view model here
@@ -35,9 +32,9 @@ fun ShopScreen(innerPadding: PaddingValues, navController: NavController) {
         ShopBanner()
         Spacer(modifier = Modifier.height(16.dp))
 
-        ProductSection(title="Exclusive Offer", viewModel.products)
+        ProductSection(title="Exclusive Offer", viewModel.products, navController)
         Spacer(modifier = Modifier.height(16.dp))
-        ProductSection(title= "Best Selling",viewModel.products)
+        ProductSection(title= "Best Selling",viewModel.products, navController)
     }
 }
 

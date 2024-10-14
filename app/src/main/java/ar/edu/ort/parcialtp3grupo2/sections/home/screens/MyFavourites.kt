@@ -23,10 +23,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.Product
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.ProductRepository
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButton
@@ -35,25 +33,26 @@ import ar.edu.ort.parcialtp3grupo2.ui.navigation.BottomBar
 
 
 @Composable
-fun MyFavouriteScreen(innerPadding: PaddingValues, navController: NavHostController) {
+fun MyFavoriteScreen() {
     Scaffold(
         topBar = {
             MyTopAppBar(
-                title = "Favourites",
+                title = "My Favorite",
                 isArrowBack = false,
+                navController = null
             )
         },
         bottomBar = {
             BottomBar(currentRoute = "Cart") {
             }
         }
-    ) { paddingValues ->
-        MyFavouriteContent(modifier = Modifier.padding(paddingValues))
+    ) { innerPadding ->
+        MyFavoriteContent(modifier = Modifier.padding(innerPadding))
     }
 }
 
 @Composable
-fun MyFavouriteContent(modifier: Modifier = Modifier) {
+fun MyFavoriteContent(modifier: Modifier = Modifier) {
     val productRepository = ProductRepository()
     val cartItems = productRepository.getAllData()
 

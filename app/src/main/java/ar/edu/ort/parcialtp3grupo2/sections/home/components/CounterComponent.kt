@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,51 +34,45 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ar.edu.ort.parcialtp3grupo2.R
-
+import ar.edu.ort.parcialtp3grupo2.ui.components.SymbolButton
 @Composable
-fun Counter(num: Int, onIncrement: () -> Unit, onDecrement: () -> Unit ) {
-Box (modifier = Modifier
-    .width(150.dp)
-    .height(90.dp)){
+fun Counter(count: Int, onIncrement: () -> Unit, onDecrement: () -> Unit) {
+
     Row(
         modifier = Modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
+            .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
 
-        Image(
-            painter = painterResource(id = R.drawable.menos),
-            contentDescription = "Decrement",
-            modifier = Modifier
-                .clickable {
-                    onDecrement()
-                }
-                .size(24.dp)
-                .padding(end = 10.dp)
-        )
+        Icon(imageVector = Icons.Default.Remove,
+            contentDescription = null,
+            tint = Color(0xFFB3B3B3),
+            modifier = Modifier.clickable { onDecrement() }
+                .padding(end = 10.dp))
+
+
         Box(
             modifier = Modifier
-                .border(BorderStroke(1.dp, Color.LightGray), RoundedCornerShape(17.dp))
-                .padding(15.dp)
+                .border(BorderStroke(1.dp, Color.LightGray), RoundedCornerShape(20.dp))
+                .padding(16.dp)
+                .height(20.dp)
         ) {
             Text(
-                text = num.toString(),
+                text = count.toString(),
                 fontSize = 20.sp,
                 color = Color.Black
             )
         }
 
-        Image(
-            painter = painterResource(id = R.drawable.mas),
-            contentDescription = "Increment",
-            modifier = Modifier
-                .clickable { onIncrement()}
-                .size(24.dp)
-                .padding(start = 10.dp)
-        )
+        Icon(imageVector = Icons.Default.Add,
+            contentDescription = null,
+            tint = Color(0xFF53B175),
+            modifier = Modifier.clickable { onIncrement() }
+                .padding(10.dp))
+
     }
 }
 
-}
+
+

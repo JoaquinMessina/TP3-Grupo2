@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.Modifier
@@ -26,7 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import ar.edu.ort.parcialtp3grupo2.R as res
 
 @Composable
-fun CategoryCard(color: Color, title: String, onClick: () -> Unit) {
+fun CategoryCard(color: Color,image:Int, title: String, onClick: () -> Unit) {
     Box(modifier = Modifier
         .width(180.dp)
         .height(190.dp)
@@ -47,14 +48,14 @@ fun CategoryCard(color: Color, title: String, onClick: () -> Unit) {
             verticalArrangement = Arrangement.Center
         ) {
                 Image(
-                    painter = painterResource(id = res.drawable.fruits),
+                    painter = painterResource(id = image),
                     contentDescription = "Shoe",
                     modifier = Modifier
                         .size(100.dp)
                 )
             Text(
                 text = title,
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.tertiary,
                 fontSize = 16.sp,
                 lineHeight = 22.sp,
                 fontWeight = FontWeight.Bold,

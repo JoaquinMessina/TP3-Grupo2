@@ -1,6 +1,8 @@
 package ar.edu.ort.parcialtp3grupo2.sections.home.account.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,7 +28,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
+import androidx.compose.ui.res.painterResource
+import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButton
 
 @Composable
@@ -50,8 +56,8 @@ fun AccountScreen(innerPadding: PaddingValues,navController: NavController) {
                 modifier = Modifier
                     .size(65.dp)
                     .clip(RoundedCornerShape((27.dp)))
-                    .background(Color.Red)
             ) {
+                Image(painter = painterResource(id = R.drawable.profile), contentDescription = null)
             }
 
             Spacer(modifier = Modifier.size(18.dp))
@@ -60,7 +66,7 @@ fun AccountScreen(innerPadding: PaddingValues,navController: NavController) {
                 Row {
                     Text(text = "Afsar Hossen", fontWeight = FontWeight.Bold, fontSize = 20.sp)
                 }
-                Text(text = "Imshuvo97@gmail.com", fontWeight = FontWeight.Normal, fontSize = 16.sp, color = Color(0x7C7C7CFF))
+                Text(text = "Imshuvo97@gmail.com", fontWeight = FontWeight.Normal, fontSize = 16.sp, color = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.4f))
             }
         }
        Column (
@@ -110,7 +116,7 @@ fun Item (icon: String, name: String){
                 .fillMaxWidth(),
         ){
             Text(text = icon, fontWeight = FontWeight.Bold, fontSize = 20.sp)
-            Text(text = name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color.Black)
+            Text(text = name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = MaterialTheme.colorScheme.tertiary)
             Spacer(modifier = Modifier.weight(1f))
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
@@ -135,10 +141,16 @@ fun DarkModeItem (){
                 .fillMaxWidth(),
         ){
             Text(text = "", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-            Text(text = "Dark Mode", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = Color.Black)
+            Text(text = "Dark Mode", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = MaterialTheme.colorScheme.tertiary)
             Spacer(modifier = Modifier.weight(1f))
-            Switch(checked = true, onCheckedChange = fun(checked: Boolean) {
-                // Handle the change
+            Switch(checked = isSystemInDarkTheme(), colors = SwitchDefaults.colors(
+                checkedThumbColor = MaterialTheme.colorScheme.primary,
+                checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                uncheckedThumbColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.4f),
+                uncheckedTrackColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.2f),
+            ), onCheckedChange = fun(checked: Boolean) {
+
+
             })
         }
     }

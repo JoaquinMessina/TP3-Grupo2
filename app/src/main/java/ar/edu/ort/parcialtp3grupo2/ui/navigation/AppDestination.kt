@@ -5,7 +5,9 @@ sealed class AppDestination(val route: String, val label: String) {
     object Account : AppDestination("account", "Account")
     object Explore : AppDestination("explore", "Find Products")
     object Cart : AppDestination("cart", "Cart")
-    object MyFavourites : AppDestination("myfavourites", "Favourites")
+    object Favourites : AppDestination("favourites", "Favourites")
+    object ProductDetail: AppDestination("shop/productDetail", "ProductDetail")
+    object OrderAccepted: AppDestination("orderAccepted", "orderAccepted")
     object Auth : AppDestination("auth", "Auth")
     object Categories : AppDestination("categories", "Categories")
 
@@ -16,9 +18,10 @@ sealed class AppDestination(val route: String, val label: String) {
                 Account.route -> Account
                 Explore.route -> Explore
                 Cart.route -> Cart
-                MyFavourites.route -> MyFavourites
+                Favourites.route -> Favourites
                 Auth.route -> Auth
                 Categories.route -> Categories
+                "${ProductDetail.route}/{id}" -> ProductDetail
                 null -> Shop  // Default screen
                 else -> Shop
             }

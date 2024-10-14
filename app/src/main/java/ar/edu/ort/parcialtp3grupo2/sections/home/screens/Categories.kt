@@ -29,18 +29,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.ProductRepository
 
 @Composable
 fun CategoriesScreen(innerPadding: PaddingValues) {
     val productRepository = ProductRepository()
-    val cartItems = productRepository.getAllData()
+    val productsByCategory =productRepository.getByCategoryId(1);
 
     Scaffold(
         topBar = {
             MyTopAppBar(
                 title = "PONER CATEGORIA",
-                isArrowBack = true
+                isArrowBack = true,
+                navController = null
             )
         },
     ) { paddingValues ->
@@ -53,7 +55,7 @@ fun CategoriesScreen(innerPadding: PaddingValues) {
                 .padding(16.dp)
                 .fillMaxSize()
         ) {
-            items(cartItems) { product ->
+            items(productsByCategory) { product ->
                 ProductCardCat(product = product)
             }
         }

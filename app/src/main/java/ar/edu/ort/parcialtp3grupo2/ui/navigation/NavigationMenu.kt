@@ -77,7 +77,7 @@ fun BottomBar (
                BottomNavigationItem(
                    modifier = Modifier.padding(0.dp, 8.dp),
                    icon = { Icon(imageVector = item.icon, contentDescription = item.label,tint = color, modifier = Modifier.size(20.dp)) },
-                   label = { Text(text = item.label, color = color, fontSize = 11.sp, fontWeight = FontWeight.Bold) },
+                   label = { Text(text = item.label, color = color, fontSize = 8.sp, fontWeight = FontWeight.Bold) },
                    selected = false,
                    onClick = { onNavigate(item.route) }
                )

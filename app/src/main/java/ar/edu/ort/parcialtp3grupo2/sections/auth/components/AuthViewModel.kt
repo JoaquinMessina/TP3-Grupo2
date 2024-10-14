@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import ar.edu.ort.parcialtp3grupo2.sections.auth.data.AuthRepository
 import ar.edu.ort.parcialtp3grupo2.sections.explore.data.Category
 import ar.edu.ort.parcialtp3grupo2.sections.explore.data.CategoryRepository
+import kotlinx.coroutines.launch
 
 
 class AuthViewModel : ViewModel() {
@@ -15,9 +16,9 @@ class AuthViewModel : ViewModel() {
 
 
     suspend fun login(email: String, password: String) : String? {
-        viewModelScope {
-            authRepository.login(email, password)
-        }
+
+        return authRepository.login(email, password)
+
     }
 
 }

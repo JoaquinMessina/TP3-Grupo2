@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,6 +33,7 @@ import ar.edu.ort.parcialtp3grupo2.sections.auth.data.AuthRepository
 import ar.edu.ort.parcialtp3grupo2.sections.auth.navigation.AuthDestination
 import ar.edu.ort.parcialtp3grupo2.sections.explore.screens.ExploreScreenViewModel
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButton
+import kotlinx.coroutines.launch
 
 @Composable
 fun Login(
@@ -42,6 +44,7 @@ fun Login(
     val viewModel = AuthViewModel()
     var (email, setEmail) = remember { mutableStateOf("") }
     var (password, setPassword) =  remember { mutableStateOf("") }
+    val coroutineScope = rememberCoroutineScope()
 
 
     Box(
@@ -98,12 +101,17 @@ fun Login(
 
 
             GreenButton(onClick = {
-                val token = viewModel.login(email, password)
-                if(token != null) {
-                    authNavhostController.navigate(AuthDestination.Location.route)
-                } else {
-                    /* TODO */
+
+                coroutineScope.launch {
+                    val token = viewModel.login(email, password)
+                    if(token != null) {
+                        authNavhostController.navigate(AuthDestination.Location.route)
+                    } else {
+                        /* TODO */
+                    }
                 }
+
+
                                   },
                 text = "Log In")
 

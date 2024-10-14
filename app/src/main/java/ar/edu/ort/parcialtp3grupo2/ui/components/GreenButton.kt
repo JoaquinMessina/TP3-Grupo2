@@ -10,20 +10,22 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.graphics.vector.ImageVector
+import ar.edu.ort.parcialtp3grupo2.ui.theme.BrandTheme
 
 
 @Composable
-fun GreenButton(onClick: () -> Unit, text: String, leftIcon: ImageVector? = null, isInverted: Boolean = false) {
+fun  GreenButton(onClick: () -> Unit, text: String, leftIcon: ImageVector? = null, isInverted: Boolean = false) {
 
-    val backgroundColor = if (isInverted) Color(0xF2F3F2FF) else Color(0xFF53B175)
+    val backgroundColor = if (isInverted) MaterialTheme.colorScheme.background else MaterialTheme.colorScheme.primary
     val contentColor = if (isInverted) Color(0xFF53B175) else Color(0xF2F3F2FF)
 
     Button(
@@ -63,10 +65,15 @@ fun GreenButton(onClick: () -> Unit, text: String, leftIcon: ImageVector? = null
 }
 
 @Composable
-fun GreenButtonRightText(onClick: () -> Unit, text: String, rightText: String? = null) {
+fun GreenButtonRightText(onClick: () -> Unit,isInverted: Boolean = false, text: String, rightText: String? = null) {
+    val backgroundColor = if (isInverted) MaterialTheme.colorScheme.background else MaterialTheme.colorScheme.primary
+    val contentColor = if (isInverted) Color(0xFF53B175) else Color(0xF2F3F2FF)
     Button(
         onClick = onClick,
-        colors = ButtonDefaults.buttonColors(Color(0xFF53B175)),
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor,
+            contentColor
+        ),
         shape = RoundedCornerShape(16.dp),
         modifier = Modifier
             .fillMaxWidth()
@@ -79,13 +86,11 @@ fun GreenButtonRightText(onClick: () -> Unit, text: String, rightText: String? =
         ) {
             Text(
                 text = text,
-                //color = Color.White,
                 fontSize = 18.sp
             )
             if (rightText != null) {
                 Text(
                     text = rightText,
-                    //color = Color.White,
                     fontSize = 10.sp,
                     modifier = Modifier
                         .align(Alignment.CenterEnd)

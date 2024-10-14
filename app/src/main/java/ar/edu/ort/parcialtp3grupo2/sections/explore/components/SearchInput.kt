@@ -8,6 +8,7 @@ import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.automirrored.outlined.Send
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -29,6 +30,7 @@ fun SearchInput (
         label = { Text("Search Store") },
         leadingIcon = {
             Icon(
+                tint = MaterialTheme.colorScheme.tertiary,
                 imageVector = Icons.AutoMirrored.Filled.ExitToApp,
                 contentDescription = "Email Icon"
             )
@@ -36,6 +38,7 @@ fun SearchInput (
         trailingIcon = {
             IconButton(onClick = { text }) {
                 Icon(
+                    tint = MaterialTheme.colorScheme.tertiary,
                     imageVector =  Icons.AutoMirrored.Outlined.Send,
                     contentDescription = "Clear Text"
                 )
@@ -43,7 +46,7 @@ fun SearchInput (
         },
         shape = RoundedCornerShape(16.dp),
         colors = TextFieldDefaults.colors(
-            unfocusedContainerColor = Color(0xF2F3F2FF),
+            unfocusedContainerColor = MaterialTheme.colorScheme.background,
             cursorColor = Color(0x00000000),
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,

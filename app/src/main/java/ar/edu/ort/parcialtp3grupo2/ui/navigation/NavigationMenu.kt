@@ -18,6 +18,7 @@ import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
@@ -27,11 +28,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 sealed class BottomNavItem(val route: String, val icon: ImageVector, val label: String) {
-    object Shop : BottomNavItem("shop", Icons.Outlined.Home, "Shop")
-    object Explore : BottomNavItem("explore", Icons.Outlined.Search, "Explore")
-    object Cart : BottomNavItem("cart", Icons.Outlined.ShoppingCart, "Cart")
-    object Account : BottomNavItem("account", Icons.Outlined.Person, "Account")
-    object Favourites : BottomNavItem("favourites", Icons.Outlined.Star, "Favourites")
+    object Shop : BottomNavItem(AppDestination.Shop.route, Icons.Outlined.Home, "Shop")
+    object Explore : BottomNavItem(AppDestination.Explore.route, Icons.Outlined.Search, "Explore")
+    object Cart : BottomNavItem(AppDestination.Cart.route, Icons.Outlined.ShoppingCart, "Cart")
+    object Account : BottomNavItem(AppDestination.Account.route, Icons.Outlined.Person, "Account")
+    object Favourites : BottomNavItem(AppDestination.Favourites.route, Icons.Outlined.Star, "Favourites")
 
 }
 
@@ -55,8 +56,7 @@ fun BottomBar (
            .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
    ){
        BottomNavigation(
-           contentColor = Color.Black,
-           backgroundColor = Color.White,
+           backgroundColor = MaterialTheme.colorScheme.background,
            elevation = 16.dp,
            modifier = Modifier
                .border(
@@ -72,7 +72,7 @@ fun BottomBar (
        ){
            bottomNavItems.forEach { item ->
                val isSelected = currentRoute == item.route
-               val color =  if(isSelected) Color(0xFF53B175) else Color.Black
+               val color =  if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.tertiary
                BottomNavigationItem(
                    modifier = Modifier.padding(0.dp, 8.dp),
                    icon = { Icon(imageVector = item.icon, contentDescription = item.label,tint = color, modifier = Modifier.size(20.dp)) },

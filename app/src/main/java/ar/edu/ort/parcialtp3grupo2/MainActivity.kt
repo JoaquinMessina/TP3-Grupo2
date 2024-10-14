@@ -6,14 +6,21 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
-import ar.edu.ort.parcialtp3grupo2.ui.theme.ParcialTP3Grupo2Theme
+import ar.edu.ort.parcialtp3grupo2.ui.theme.BrandTheme
 import ar.edu.ort.parcialtp3grupo2.ui.navigation.NavGraph
 import androidx.navigation.compose.rememberNavController
+import ar.edu.ort.parcialtp3grupo2.sections.auth.screens.SplashScreen
 import ar.edu.ort.parcialtp3grupo2.ui.navigation.AppDestination
 import ar.edu.ort.parcialtp3grupo2.ui.navigation.BottomBar
+import kotlinx.coroutines.time.delay
+import java.time.Duration
 import ar.edu.ort.parcialtp3grupo2.ui.components.MyTopAppBar as TopBar
 
 class MainActivity : ComponentActivity() {
@@ -21,35 +28,46 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ParcialTP3Grupo2Theme {
+            BrandTheme {
                 val navController = rememberNavController()
                 val currentBackStackEntry by navController.currentBackStackEntryAsState()
+
                 val nonTopBarRoutes = listOf(
-                    AppDestination.Shop.route
+                    AppDestination.Auth.route,
                 )
 
                 val nonBottomBarRoutes = listOf(
-                    AppDestination.Account.route
+                    AppDestination.Auth.route
                 )
 
                 Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {
-                    var destionation = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "")
-                    if (!nonBottomBarRoutes.contains(destionation.route)){
-                        BottomBar (
-                            currentRoute = currentBackStackEntry?.destination?.route ?: "",
-                            onNavigate = { route ->
-                                navController.navigate(route)
-                            }
-                        )
+                    val destination = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "")
+
+                    if(
+                        nonBottomBarRoutes.contains(destination.route)
+                    ) {
+                        return@Scaffold
                     }
-                },topBar ={
-                    var destionation = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "")
-                    if (!nonTopBarRoutes.contains(destionation.route)){
-                        TopBar(
-                            title = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "").label,
-                            isArrowBack = false
-                        )
+
+                    BottomBar (
+                        currentRoute = currentBackStackEntry?.destination?.route ?: "",
+                        onNavigate = { route ->
+                            navController.navigate(route)
+                        }
+                    )
+                }, topBar = {
+                    val destination = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "")
+
+                    if(
+                        nonTopBarRoutes.contains(destination.route)
+                    ) {
+                        return@Scaffold
                     }
+
+                    TopBar(
+                        title = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "").label,
+                        isArrowBack = false
+                    )
                 }) { innerPadding ->
                     NavGraph(navController = navController, innerPadding = innerPadding)
                 }
@@ -57,4 +75,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-

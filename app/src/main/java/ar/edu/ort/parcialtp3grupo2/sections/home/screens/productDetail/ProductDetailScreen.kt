@@ -80,7 +80,7 @@ fun ProductDetailScreen(innerPadding: PaddingValues, prod: Product) {
         ProductDetailBody(prod = prod, counter, onDecrement ={ if (counter > 0) counter-- }, onIncrement = {counter++} )
 
     }
-        GreenButtonRightText(onClick = { }, "Add to Basket" )
+        GreenButtonRightText(onClick = { }, text= "Add to Basket" )
     }
 
 }

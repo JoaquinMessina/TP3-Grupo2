@@ -13,11 +13,12 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTopAppBar(title: String, isArrowBack: Boolean) {
+fun MyTopAppBar(title: String, isArrowBack: Boolean, navController: NavController?) {
     TopAppBar(
         title = {
             Text(
@@ -29,10 +30,8 @@ fun MyTopAppBar(title: String, isArrowBack: Boolean) {
         },
         navigationIcon = {
             IconButton(onClick = {
-                if (isArrowBack) {
-                    //futura logica de flechita
-                } else {
-                    //no hay logica de 3 barritas
+                if (isArrowBack && navController != null) {
+                    navController.popBackStack()
                 }
             }) {
                 Icon(

@@ -6,20 +6,25 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.automirrored.outlined.Send
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Tune
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun SearchInput (
     text: String,
-    onTextChange: (String) -> Unit
+    onTextChange: (String) -> Unit,
+    onClick: () -> Unit
 ){
     TextField(
         value = text,
@@ -29,21 +34,23 @@ fun SearchInput (
         label = { Text("Search Store") },
         leadingIcon = {
             Icon(
-                imageVector = Icons.AutoMirrored.Filled.ExitToApp,
+                tint = MaterialTheme.colorScheme.tertiary,
+                imageVector = Icons.Default.Search,
                 contentDescription = "Email Icon"
             )
         },
         trailingIcon = {
-            IconButton(onClick = { text }) {
+            IconButton(onClick = { onClick() }) {
                 Icon(
-                    imageVector =  Icons.AutoMirrored.Outlined.Send,
+                    tint = MaterialTheme.colorScheme.tertiary,
+                    imageVector =  Icons.Filled.Tune,
                     contentDescription = "Clear Text"
                 )
             }
         },
         shape = RoundedCornerShape(16.dp),
         colors = TextFieldDefaults.colors(
-            unfocusedContainerColor = Color(0xF2F3F2FF),
+            unfocusedContainerColor = MaterialTheme.colorScheme.background,
             cursorColor = Color(0x00000000),
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,

@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.BottomSheetState
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -25,11 +26,14 @@ import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButtonRightText
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FiltersBottomSheet(
-    onDismiss: () -> Unit //futura logica de quite
+    onDismiss: () -> Unit, //futura logica de quite
+    sheetState: SheetState
 ) {
     ModalBottomSheet(
+        sheetState = sheetState,
         onDismissRequest = { onDismiss() },
-        modifier = Modifier.fillMaxHeight()
+        modifier = Modifier.fillMaxHeight(),
+        dragHandle = {false}
     ) {
 
         FiltersContent(onDismiss)
@@ -97,15 +101,14 @@ fun FiltersContent(onDismiss: () -> Unit) {
                     text = "Brand",
                     fontSize = 19.sp,
                     style = MaterialTheme.typography.titleMedium,
-                    color = Color.Black // Texto en negro
+                    color = Color.Black
                 )
                 MyCheckboxes(listOf("Individual Collection", "Coca-Cola", "Ifad", "Kazi Farmas"))
             }
-            GreenButtonRightText(onClick = { /*TODO*/ }, text = "Apply Filters")
+            GreenButtonRightText(onClick = { onDismiss() }, text = "Apply Filters")
         }
     }
 }
-
 
 @Composable
 fun MyCheckboxes(list: List<String>) {
@@ -126,14 +129,18 @@ fun MyCheckboxes(list: List<String>) {
                     .clip(RoundedCornerShape(10.dp))
                     .size(24.dp),
                 colors = CheckboxDefaults.colors(
-                    checkedColor = Color.Green,
+                    checkedColor = Color(0xFF53B175),
                     uncheckedColor = Color.LightGray,
                     checkmarkColor = Color.White
                 )
             )
 
             Spacer(modifier = Modifier.width(8.dp))
-            Text(text = category, color = Color.Black)
+
+            Text(
+                text = category,
+                color = if (checkedState[index]) Color(0xFF53B175) else Color.Black
+            )
         }
     }
 }

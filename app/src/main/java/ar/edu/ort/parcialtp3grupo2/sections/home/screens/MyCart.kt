@@ -11,9 +11,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,6 +27,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ar.edu.ort.parcialtp3grupo2.sections.home.components.CheckoutBottomSheet
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.Product
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.ProductRepository
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButtonRightText
@@ -34,7 +41,8 @@ fun MyCartScreen() {
         topBar = {
             MyTopAppBar(
                 title = "My Cart",
-                isArrowBack = false
+                isArrowBack = false,
+                navController = null
             )
         },
         bottomBar = {
@@ -46,8 +54,13 @@ fun MyCartScreen() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyCartContent(modifier: Modifier = Modifier) {
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true )
+    var isSheetopen by remember {
+        mutableStateOf(false)
+    }
     val productRepository = ProductRepository()
     val cartItems = productRepository.getAllData()
 
@@ -69,7 +82,11 @@ fun MyCartContent(modifier: Modifier = Modifier) {
             }
         }
         Divider(color = Color.LightGray, thickness = 0.7.dp)
-        GreenButtonRightText(onClick = {}, "Go to Checkout", "$1500")
+        GreenButtonRightText(onClick = { isSheetopen = true }, text="Go to Checkout", rightText = "$1500")
+        if(isSheetopen){
+            CheckoutBottomSheet(onDismiss = { isSheetopen = false }, sheetState = sheetState)
+
+        }
     }
 }
 

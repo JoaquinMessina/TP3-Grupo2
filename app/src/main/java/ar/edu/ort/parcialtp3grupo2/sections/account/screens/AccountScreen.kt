@@ -1,7 +1,6 @@
 package ar.edu.ort.parcialtp3grupo2.sections.home.account.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -9,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -18,7 +18,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -27,11 +26,22 @@ import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.ConfirmationNumber
+import androidx.compose.material.icons.filled.CreditCard
+import androidx.compose.material.icons.filled.Help
+import androidx.compose.material.icons.filled.LocalMall
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.ShoppingBag
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButton
 
@@ -57,7 +67,9 @@ fun AccountScreen(innerPadding: PaddingValues,navController: NavController) {
                     .size(65.dp)
                     .clip(RoundedCornerShape((27.dp)))
             ) {
-                Image(painter = painterResource(id = R.drawable.profile), contentDescription = null)
+                Image(painter = painterResource(id = R.drawable.profile),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize())
             }
 
             Spacer(modifier = Modifier.size(18.dp))
@@ -75,19 +87,19 @@ fun AccountScreen(innerPadding: PaddingValues,navController: NavController) {
               verticalArrangement = Arrangement.spacedBy(0.dp),
        ) {
            HorizontalDivider(thickness = 1.dp)
-           Item(icon = "📦", name = "Orders")
+           Item(icon = Icons.Default.LocalMall, name = "Orders")
            HorizontalDivider(thickness = 1.dp)
-           Item(icon = "🛒", name = "My Details")
+           Item(icon = Icons.Default.AccountBox, name = "My Details")
            HorizontalDivider(thickness = 1.dp)
-           Item(icon = "🛠", name = "Delivery Address")
+           Item(icon = Icons.Default.LocationOn, name = "Delivery Address")
            HorizontalDivider(thickness = 1.dp)
-           Item(icon = "🔒", name = "Payment Methods")
+           Item(icon = Icons.Default.CreditCard, name = "Payment Methods")
            HorizontalDivider(thickness = 1.dp)
-           Item(icon = "🔔", name = "Promo Card")
+           Item(icon = Icons.Default.ConfirmationNumber, name = "Promo Card")
            HorizontalDivider(thickness = 1.dp)
-           Item(icon = "🔗", name = "Notification")
+           Item(icon = Icons.Default.Notifications, name = "Notification")
            HorizontalDivider(thickness = 1.dp)
-           Item(icon = "🔗", name = "Help")
+           Item(icon = Icons.Default.Help, name = "Help")
            HorizontalDivider(thickness = 1.dp)
            DarkModeItem()
            HorizontalDivider(thickness = 1.dp)
@@ -100,7 +112,7 @@ fun AccountScreen(innerPadding: PaddingValues,navController: NavController) {
 
 
 @Composable
-fun Item (icon: String, name: String){
+fun Item (icon: ImageVector, name: String){
     Row (
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
@@ -115,7 +127,8 @@ fun Item (icon: String, name: String){
             modifier = Modifier
                 .fillMaxWidth(),
         ){
-            Text(text = icon, fontWeight = FontWeight.Bold, fontSize = 20.sp)
+            Icon(imageVector = icon,
+                contentDescription = null)
             Text(text = name, fontWeight = FontWeight.Bold, fontSize = 18.sp, color = MaterialTheme.colorScheme.tertiary)
             Spacer(modifier = Modifier.weight(1f))
             Icon(

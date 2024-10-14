@@ -9,6 +9,8 @@ sealed class AppDestination(val route: String, val label: String) {
     object ProductDetail: AppDestination("shop/productDetail", "ProductDetail")
     object OrderAccepted: AppDestination("orderAccepted", "orderAccepted")
     object Auth : AppDestination("auth", "Auth")
+    object Categories : AppDestination("categories", "Categories")
+
     companion object {
         fun fromRoute(route: String?): AppDestination =
             when (route) {
@@ -18,6 +20,7 @@ sealed class AppDestination(val route: String, val label: String) {
                 Cart.route -> Cart
                 Favourites.route -> Favourites
                 Auth.route -> Auth
+                Categories.route -> Categories
                 "${ProductDetail.route}/{id}" -> ProductDetail
                 null -> Shop  // Default screen
                 else -> Shop

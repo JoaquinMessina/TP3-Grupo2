@@ -5,11 +5,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import ar.edu.ort.parcialtp3grupo2.R
+import ar.edu.ort.parcialtp3grupo2.sections.auth.navigation.AuthNavGraph
 import ar.edu.ort.parcialtp3grupo2.sections.explore.screens.FindProductsScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.account.screens.AccountScreen
-import ar.edu.ort.parcialtp3grupo2.sections.home.data.Product
+import ar.edu.ort.parcialtp3grupo2.sections.home.screens.CategoriesScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.MyCartScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.MyFavoriteScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.ShopScreen
@@ -19,17 +21,23 @@ import ar.edu.ort.parcialtp3grupo2.sections.orderAccepted.OrderAcceptedScreen
 
 @Composable
 fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
-    NavHost(navController = navController, startDestination = AppDestination.Shop.route) {
+    NavHost(navController = navController, startDestination = AppDestination.Auth.route) {
+        composable(AppDestination.Auth.route) {
+            var authNavController = rememberNavController()
+            AuthNavGraph(
+                 authNavController,
+                globalController = navController,
+                innerPadding = innerPadding
+            )
+
+        }
+
         composable(AppDestination.Shop.route) {
            ShopScreen(innerPadding, navController)
         }
 
         composable(AppDestination.Cart.route) {
             MyCartScreen()
-        }
-
-        composable(AppDestination.Favourites.route) {
-            MyFavoriteScreen()
         }
 
         composable(AppDestination.Account.route) {
@@ -47,5 +55,13 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
         composable(AppDestination.OrderAccepted.route) {
             OrderAcceptedScreen(innerPadding = innerPadding)
         }
+        composable(AppDestination.Categories.route) {
+            CategoriesScreen(innerPadding = innerPadding)
+        }
+        composable(AppDestination.Favourites.route) {
+            MyFavoriteScreen()
+        }
+
     }
+
 }

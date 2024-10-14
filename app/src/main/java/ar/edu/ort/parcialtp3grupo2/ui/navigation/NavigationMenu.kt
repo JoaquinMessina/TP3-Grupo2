@@ -28,11 +28,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 sealed class BottomNavItem(val route: String, val icon: ImageVector, val label: String) {
-    object Shop : BottomNavItem(AppDestination.Shop.route, Icons.Outlined.Home, "Shop")
-    object Explore : BottomNavItem(AppDestination.Explore.route, Icons.Outlined.Search, "Explore")
-    object Cart : BottomNavItem(AppDestination.Cart.route, Icons.Outlined.ShoppingCart, "Cart")
-    object Account : BottomNavItem(AppDestination.Account.route, Icons.Outlined.Person, "Account")
-    object Favourites : BottomNavItem(AppDestination.Favourites.route, Icons.Outlined.Star, "Favourites")
+    object Shop : BottomNavItem("shop", Icons.Outlined.Home, "Shop")
+    object Explore : BottomNavItem("explore", Icons.Outlined.Search, "Explore")
+    object Cart : BottomNavItem("cart", Icons.Outlined.ShoppingCart, "Cart")
+    object Account : BottomNavItem("account", Icons.Outlined.Person, "Account")
+    object Favourites : BottomNavItem("favourites", Icons.Outlined.Star, "Favourites")
 
 }
 
@@ -56,7 +56,8 @@ fun BottomBar (
            .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
    ){
        BottomNavigation(
-           backgroundColor = MaterialTheme.colorScheme.background,
+           contentColor = Color.Black,
+           backgroundColor = Color.White,
            elevation = 16.dp,
            modifier = Modifier
                .border(
@@ -72,9 +73,9 @@ fun BottomBar (
        ){
            bottomNavItems.forEach { item ->
                val isSelected = currentRoute == item.route
-               val color =  if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.tertiary
+               val color =  if(isSelected) Color(0xFF53B175) else Color.Black
                BottomNavigationItem(
-                   modifier = Modifier.padding(top = 0.dp, bottom = 10.dp, start = 0.dp, end = 0.dp),
+                   modifier = Modifier.padding(0.dp, 8.dp),
                    icon = { Icon(imageVector = item.icon, contentDescription = item.label,tint = color, modifier = Modifier.size(20.dp)) },
                    label = { Text(text = item.label, color = color, fontSize = 11.sp, fontWeight = FontWeight.Bold) },
                    selected = false,

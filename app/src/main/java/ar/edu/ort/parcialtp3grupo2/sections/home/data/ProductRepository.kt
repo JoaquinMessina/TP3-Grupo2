@@ -60,10 +60,10 @@ class ProductRepository {
         ),
         Product(
             id = "6",
-            name = "Carne picada",
+            name = "Ground Meat",
             price = 3000.0,
             amount = "1kg",
-            image = R.drawable.eggchickenwhite,
+            image = R.drawable.groundmeat,
             detail = "The best meat in the world, always a good choice",
             categoryId = 3
         )

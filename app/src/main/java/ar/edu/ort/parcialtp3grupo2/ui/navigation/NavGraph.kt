@@ -6,9 +6,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import ar.edu.ort.parcialtp3grupo2.sections.auth.navigation.AuthNavGraph
-import ar.edu.ort.parcialtp3grupo2.sections.auth.screens.Login
 import ar.edu.ort.parcialtp3grupo2.sections.explore.screens.FindProductsScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.account.screens.AccountScreen
+import ar.edu.ort.parcialtp3grupo2.sections.home.screens.CategoriesScreen
+import ar.edu.ort.parcialtp3grupo2.sections.home.screens.MyFavouriteScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.ShopScreen
 
 @Composable
@@ -33,7 +34,12 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
         composable(AppDestination.Explore.route) {
             FindProductsScreen(innerPadding = innerPadding)
         }
-
+        composable(AppDestination.Categories.route) {
+            CategoriesScreen(innerPadding = innerPadding)
+        }
+        composable(AppDestination.MyFavourites.route) {
+            MyFavouriteScreen(innerPadding, navController)
+        }
 
     }
 

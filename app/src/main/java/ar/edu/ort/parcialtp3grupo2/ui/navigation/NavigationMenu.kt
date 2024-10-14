@@ -31,7 +31,7 @@ sealed class BottomNavItem(val route: String, val icon: ImageVector, val label: 
     object Explore : BottomNavItem("explore", Icons.Outlined.Search, "Explore")
     object Cart : BottomNavItem("cart", Icons.Outlined.ShoppingCart, "Cart")
     object Account : BottomNavItem("account", Icons.Outlined.Person, "Account")
-    object Favourites : BottomNavItem("favourites", Icons.Outlined.Star, "Favourites")
+    object MyFavourites : BottomNavItem("myfavourites", Icons.Outlined.Star, "Favourites")
 
 }
 
@@ -39,7 +39,7 @@ val bottomNavItems = listOf(
     BottomNavItem.Shop,
     BottomNavItem.Explore,
     BottomNavItem.Cart,
-    BottomNavItem.Favourites,
+    BottomNavItem.MyFavourites,
     BottomNavItem.Account,
 )
 
@@ -76,7 +76,7 @@ fun BottomBar (
                BottomNavigationItem(
                    modifier = Modifier.padding(0.dp, 8.dp),
                    icon = { Icon(imageVector = item.icon, contentDescription = item.label,tint = color, modifier = Modifier.size(20.dp)) },
-                   label = { Text(text = item.label, color = color, fontSize = 11.sp, fontWeight = FontWeight.Bold) },
+                   label = { Text(text = item.label, color = color, fontSize = 8.sp, fontWeight = FontWeight.Bold) },
                    selected = false,
                    onClick = { onNavigate(item.route) }
                )

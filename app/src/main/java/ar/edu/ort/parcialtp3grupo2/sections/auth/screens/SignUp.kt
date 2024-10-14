@@ -15,6 +15,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -42,6 +44,9 @@ fun SignUp(
     authController:NavHostController
 ) {
     val scrollState = rememberScrollState()
+    var (email, setEmail) = remember { mutableStateOf("") }
+    var validMail = email.contains("@gmail.com")
+    var (password, setPassword) =  remember { mutableStateOf("") }
 
     Box(
         modifier = Modifier
@@ -84,15 +89,15 @@ fun SignUp(
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            GenericTextField(text = "Username")
+            GenericTextField(text = "Username", value = email, setValue = setEmail)
 
             Spacer(modifier = Modifier.height(36.dp))
 
-            ValidatedTextField(text = "Email")
+            ValidatedTextField(text = "Email", value = email, setValue = setEmail, isValid = validMail)
 
             Spacer(modifier = Modifier.height(36.dp))
 
-            PasswordTextField()
+            PasswordTextField(value = password, setValue = setPassword)
 
             Spacer(modifier = Modifier.height(16.dp))
 

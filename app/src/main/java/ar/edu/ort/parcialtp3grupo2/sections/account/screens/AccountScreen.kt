@@ -2,6 +2,7 @@ package ar.edu.ort.parcialtp3grupo2.sections.home.account.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -65,7 +66,7 @@ fun AccountScreen(innerPadding: PaddingValues,navController: NavController) {
                 Row {
                     Text(text = "Afsar Hossen", fontWeight = FontWeight.Bold, fontSize = 20.sp)
                 }
-                Text(text = "Imshuvo97@gmail.com", fontWeight = FontWeight.Normal, fontSize = 16.sp, color = MaterialTheme.colorScheme.secondary)
+                Text(text = "Imshuvo97@gmail.com", fontWeight = FontWeight.Normal, fontSize = 16.sp, color = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.4f))
             }
         }
        Column (
@@ -142,13 +143,14 @@ fun DarkModeItem (){
             Text(text = "", fontWeight = FontWeight.Bold, fontSize = 20.sp)
             Text(text = "Dark Mode", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = MaterialTheme.colorScheme.tertiary)
             Spacer(modifier = Modifier.weight(1f))
-            Switch(checked = true, colors = SwitchDefaults.colors(
+            Switch(checked = isSystemInDarkTheme(), colors = SwitchDefaults.colors(
                 checkedThumbColor = MaterialTheme.colorScheme.primary,
                 checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
-                uncheckedThumbColor = MaterialTheme.colorScheme.tertiary,
-                uncheckedTrackColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.5f),
+                uncheckedThumbColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.4f),
+                uncheckedTrackColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.2f),
             ), onCheckedChange = fun(checked: Boolean) {
-                // Handle the change
+
+
             })
         }
     }

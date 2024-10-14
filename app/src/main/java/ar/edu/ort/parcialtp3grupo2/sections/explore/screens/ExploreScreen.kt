@@ -57,7 +57,7 @@ fun FindProductsScreen(innerPadding: PaddingValues) {
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             items(viewModel.getAllCategories()) { category ->
-                CategoryCard(color = category.color, title = category.name) {
+                CategoryCard(color = category.color, image = category.image, title = category.name) {
                 }
             }
         }

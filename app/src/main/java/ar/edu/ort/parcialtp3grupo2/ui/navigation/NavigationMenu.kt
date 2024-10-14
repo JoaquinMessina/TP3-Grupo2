@@ -74,7 +74,7 @@ fun BottomBar (
                val isSelected = currentRoute == item.route
                val color =  if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.tertiary
                BottomNavigationItem(
-                   modifier = Modifier.padding(0.dp, 8.dp),
+                   modifier = Modifier.padding(top = 0.dp, bottom = 10.dp, start = 0.dp, end = 0.dp),
                    icon = { Icon(imageVector = item.icon, contentDescription = item.label,tint = color, modifier = Modifier.size(20.dp)) },
                    label = { Text(text = item.label, color = color, fontSize = 11.sp, fontWeight = FontWeight.Bold) },
                    selected = false,

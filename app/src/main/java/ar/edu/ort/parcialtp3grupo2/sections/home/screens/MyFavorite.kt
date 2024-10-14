@@ -50,7 +50,8 @@ fun MyFavoriteScreen() {
         topBar = {
             MyTopAppBar(
                 title = "My Favorite",
-                isArrowBack = false
+                isArrowBack = false,
+                navController = null
             )
         },
         bottomBar = {

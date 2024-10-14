@@ -17,9 +17,11 @@ import ar.edu.ort.parcialtp3grupo2.ui.navigation.BottomBar
 import ar.edu.ort.parcialtp3grupo2.ui.components.MyTopAppBar as TopBar
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContent {
             BrandTheme {
                 val navController = rememberNavController()
@@ -30,7 +32,12 @@ class MainActivity : ComponentActivity() {
                 )
 
                 val nonBottomBarRoutes = listOf(
-                    AppDestination.Auth.route
+                    AppDestination.Auth.route,
+                    AppDestination.ProductDetail.route
+                )
+
+                val routesWithArrowBack = listOf(
+                    "${AppDestination.ProductDetail.route}/{id}"
                 )
 
                 Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {
@@ -59,7 +66,8 @@ class MainActivity : ComponentActivity() {
 
                     TopBar(
                         title = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "").label,
-                        isArrowBack = false
+                        isArrowBack = routesWithArrowBack.contains(currentBackStackEntry?.destination?.route),
+                        navController = navController
                     )
                 }) { innerPadding ->
                     NavGraph(navController = navController, innerPadding = innerPadding)

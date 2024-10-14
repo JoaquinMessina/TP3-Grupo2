@@ -18,6 +18,7 @@ sealed class AppDestination(val route: String, val label: String) {
                 Cart.route -> Cart
                 Favourites.route -> Favourites
                 Auth.route -> Auth
+                "${ProductDetail.route}/{id}" -> ProductDetail
                 null -> Shop  // Default screen
                 else -> Shop
             }

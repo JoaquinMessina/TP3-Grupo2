@@ -41,7 +41,8 @@ fun MyCartScreen() {
         topBar = {
             MyTopAppBar(
                 title = "My Cart",
-                isArrowBack = false
+                isArrowBack = false,
+                navController = null
             )
         },
         bottomBar = {

@@ -27,7 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import ar.edu.ort.parcialtp3grupo2.R as res
 
 @Composable
-fun CategoryCard(color: Color, title: String, onClick: () -> Unit) {
+fun CategoryCard(color: Color,image:Int, title: String, onClick: () -> Unit) {
     Box(modifier = Modifier
         .width(180.dp)
         .height(190.dp)
@@ -48,7 +48,7 @@ fun CategoryCard(color: Color, title: String, onClick: () -> Unit) {
             verticalArrangement = Arrangement.Center
         ) {
                 Image(
-                    painter = painterResource(id = res.drawable.fruits),
+                    painter = painterResource(id = image),
                     contentDescription = "Shoe",
                     modifier = Modifier
                         .size(100.dp)

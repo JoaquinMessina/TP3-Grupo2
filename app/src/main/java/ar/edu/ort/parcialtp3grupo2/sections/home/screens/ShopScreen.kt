@@ -14,9 +14,6 @@ import ar.edu.ort.parcialtp3grupo2.sections.home.components.ProductSection
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.ShopBanner
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.AddressName
 
-
-
-
 @Composable
 fun ShopScreen(innerPadding: PaddingValues, navController: NavController) {
     // implement the view model here

@@ -24,19 +24,32 @@ class MainActivity : ComponentActivity() {
             ParcialTP3Grupo2Theme {
                 val navController = rememberNavController()
                 val currentBackStackEntry by navController.currentBackStackEntryAsState()
+                val nonTopBarRoutes = listOf(
+                    AppDestination.Shop.route
+                )
+
+                val nonBottomBarRoutes = listOf(
+                    AppDestination.Account.route
+                )
 
                 Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {
-                    BottomBar (
-                        currentRoute = currentBackStackEntry?.destination?.route ?: "",
-                        onNavigate = { route ->
-                            navController.navigate(route)
-                        }
-                    )
-                }, topBar = {
-                    TopBar(
-                        title = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "").label,
-                        isArrowBack = false
-                    )
+                    var destionation = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "")
+                    if (!nonBottomBarRoutes.contains(destionation.route)){
+                        BottomBar (
+                            currentRoute = currentBackStackEntry?.destination?.route ?: "",
+                            onNavigate = { route ->
+                                navController.navigate(route)
+                            }
+                        )
+                    }
+                },topBar ={
+                    var destionation = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "")
+                    if (!nonTopBarRoutes.contains(destionation.route)){
+                        TopBar(
+                            title = AppDestination.fromRoute(currentBackStackEntry?.destination?.route ?: "").label,
+                            isArrowBack = false
+                        )
+                    }
                 }) { innerPadding ->
                     NavGraph(navController = navController, innerPadding = innerPadding)
                 }

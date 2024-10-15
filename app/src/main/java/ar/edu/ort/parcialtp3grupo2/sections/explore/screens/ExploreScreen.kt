@@ -20,6 +20,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.SheetValue
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import ar.edu.ort.parcialtp3grupo2.sections.explore.components.CategoryCard
 import ar.edu.ort.parcialtp3grupo2.sections.explore.components.SearchInput
 import ar.edu.ort.parcialtp3grupo2.sections.explore.data.Category
@@ -29,7 +30,7 @@ import ar.edu.ort.parcialtp3grupo2.sections.home.screens.ShopScreenViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FindProductsScreen(innerPadding: PaddingValues) {
+fun FindProductsScreen(innerPadding: PaddingValues, navController: NavController) {
     var text by remember { mutableStateOf("") }
     val viewModel = ExploreScreenViewModel()
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true )
@@ -67,8 +68,7 @@ fun FindProductsScreen(innerPadding: PaddingValues) {
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             items(viewModel.getAllCategories()) { category ->
-                CategoryCard(color = category.color, image = category.image, title = category.name) {
-                }
+                CategoryCard(color = category.color, image = category.image, title = category.name, navController = navController)
             }
         }
         if(isSheetopen){
@@ -77,6 +77,5 @@ fun FindProductsScreen(innerPadding: PaddingValues) {
 
     }
     }
-
 
 }

@@ -29,7 +29,6 @@ fun SearchScreen(
 ) {
     val productRepository = ProductRepository()
     val cartItems = productRepository.getAllData()
-
         Column(
             modifier = Modifier
                 .padding(start = 16.dp, end = 16.dp, bottom = 16.dp, top = 64.dp)

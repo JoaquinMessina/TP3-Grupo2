@@ -31,6 +31,7 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues, isDa
                 innerPadding = innerPadding
             )
         }
+
         composable(AppDestination.Shop.route) {
            ShopScreen(innerPadding, navController)
         }
@@ -43,7 +44,7 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues, isDa
             AccountScreen(innerPadding, isDarkTheme = isDarkTheme, onThemeChange = onThemeChange)
         }
         composable(AppDestination.Explore.route) {
-            FindProductsScreen(innerPadding = innerPadding)
+            FindProductsScreen(innerPadding = innerPadding, navController)
         }
         composable(AppDestination.ProductDetail.route + "/{id}",
             arguments = listOf(navArgument(name = "id"){type = NavType.StringType})

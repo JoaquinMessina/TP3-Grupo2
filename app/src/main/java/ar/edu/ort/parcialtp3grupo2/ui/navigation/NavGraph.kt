@@ -53,11 +53,14 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues, isDa
            val id = backStackEntry.arguments?.getString("id") ?: "0"
           ProductDetailScreen(innerPadding = innerPadding, id)
         }
+
         composable(AppDestination.OrderAccepted.route) {
             OrderAcceptedScreen(innerPadding = innerPadding, navController)
         }
-        composable(AppDestination.Categories.route) {
-            CategoriesScreen(innerPadding = innerPadding)
+
+        composable(AppDestination.Categories.route + "/{id}", arguments = listOf(navArgument(name = "id"){type = NavType.StringType})) { backStackEntry ->
+            val id = backStackEntry.arguments?.getString("id") ?: "0"
+            CategoriesScreen(categoryId = id, innerPadding = innerPadding)
         }
         composable(AppDestination.Favourites.route) {
             MyFavoriteScreen(navController)

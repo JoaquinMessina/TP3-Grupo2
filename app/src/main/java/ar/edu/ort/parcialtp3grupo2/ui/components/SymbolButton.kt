@@ -22,14 +22,13 @@ fun SymbolButton(symbol: ImageVector, isInverted: Boolean = false, onClick: () -
     val buttonColor = if (isInverted) {
         Color.Transparent
     } else {
-        Color(0xFF53B175)
-
+        MaterialTheme.colorScheme.primary
     }
 
     val contentColor = if (isInverted) {
-        Color(0xFF53B175)
+        MaterialTheme.colorScheme.primary
     } else {
-        Color.Transparent
+        Color.White
     }
 
     Button(onClick = onClick,
@@ -49,7 +48,7 @@ fun SymbolButton(symbol: ImageVector, isInverted: Boolean = false, onClick: () -
         Icon(
             imageVector = symbol,
             modifier = Modifier.size(32.dp),
-            tint = if (isInverted) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary,
+            tint = if (isInverted) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.background,
             contentDescription = null,
         )
     }

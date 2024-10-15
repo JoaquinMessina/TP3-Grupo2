@@ -1,5 +1,6 @@
 package ar.edu.ort.parcialtp3grupo2.sections.explore.components
 
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -29,7 +30,7 @@ import ar.edu.ort.parcialtp3grupo2.ui.navigation.AppDestination
 import ar.edu.ort.parcialtp3grupo2.R as res
 
 @Composable
-fun CategoryCard(color: Color,image:Int, title: String, navController : NavController) {
+fun CategoryCard(id: String, color: Color,image:Int, title: String, navController : NavController) {
     Box(modifier = Modifier
         .width(180.dp)
         .height(190.dp)
@@ -40,7 +41,11 @@ fun CategoryCard(color: Color,image:Int, title: String, navController : NavContr
             shape = RoundedCornerShape(18.dp)
         )
         .background(color.copy(alpha = 0.1f), shape = RoundedCornerShape(18.dp))
-        .clickable { navController.navigate(AppDestination.Categories.route) }
+        .clickable {
+            val route =
+                "${AppDestination.Categories.route}/${Uri.encode(id.toString())}"
+            navController.navigate(route)
+        }
     ) {
         Column(
             modifier = Modifier

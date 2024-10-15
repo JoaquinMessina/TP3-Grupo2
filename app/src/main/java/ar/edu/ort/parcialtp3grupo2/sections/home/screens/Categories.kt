@@ -36,31 +36,38 @@ import androidx.navigation.NavController
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.ProductRepository
 
 @Composable
-fun CategoriesScreen(innerPadding: PaddingValues) {
+fun CategoriesScreen(categoryId: String, innerPadding: PaddingValues) {
     val productRepository = ProductRepository()
-    val productsByCategory =productRepository.getByCategoryId(1);
+    val productsByCategory = productRepository.getByCategoryId(categoryId.toInt());
 
-    Scaffold(
-        topBar = {
-            MyTopAppBar(
-                title = "PONER CATEGORIA",
-                isArrowBack = true,
-                navController = null
-            )
-        },
-    ) { paddingValues ->
+
+    if(productsByCategory.isNotEmpty()) {
+
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier
-                .padding(paddingValues)
+                .padding(innerPadding)
                 .padding(16.dp)
                 .fillMaxSize()
         ) {
             items(productsByCategory) { product ->
                 ProductCardCat(product = product)
             }
+        }
+    }else{
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "No products found",
+                fontSize = 32.sp,
+                fontWeight = FontWeight(700),
+                color = MaterialTheme.colorScheme.secondary
+            )
         }
     }
 }

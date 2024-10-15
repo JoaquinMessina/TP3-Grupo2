@@ -21,8 +21,9 @@ sealed class AppDestination(val route: String, val label: String) {
                 Cart.route -> Cart
                 Favourites.route -> Favourites
                 Auth.route -> Auth
-                Categories.route -> Categories
                 Search.route -> Search
+                OrderAccepted.route -> OrderAccepted
+                "${Categories.route}/{id}" -> Categories
                 "${ProductDetail.route}/{id}" -> ProductDetail
                 null -> Shop  // Default screen
                 else -> Shop

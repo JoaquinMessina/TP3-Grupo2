@@ -29,8 +29,9 @@ fun ShopScreen(innerPadding: PaddingValues, navController: NavController) {
                 rememberScrollState()
             )
     ) {
-        AddressName()
         Spacer(modifier = Modifier.height(16.dp))
+        AddressName()
+        Spacer(modifier = Modifier.height(4.dp))
 
         ShopBanner()
 

@@ -1,5 +1,6 @@
 package ar.edu.ort.parcialtp3grupo2.sections.explore.screens
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,6 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,7 +32,10 @@ fun SearchScreen(
 ) {
     val productRepository = ProductRepository()
     val cartItems = productRepository.getAllData()
-        Column(
+
+    val itemsCoincidents = cartItems.filter { it.name.contains(text, ignoreCase = true) }
+
+    Column(
             modifier = Modifier
                 .padding(start = 16.dp, end = 16.dp, bottom = 16.dp, top = 64.dp)
                 .fillMaxWidth()
@@ -41,12 +47,13 @@ fun SearchScreen(
                 columns = GridCells.Fixed(2),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
+
                 modifier = Modifier
                     .padding()
                     .padding(16.dp)
                     .fillMaxSize()
             ) {
-                items(cartItems) { product ->
+                items(itemsCoincidents) { product ->
                     ProductCardCat(product = product)
                 }
             }

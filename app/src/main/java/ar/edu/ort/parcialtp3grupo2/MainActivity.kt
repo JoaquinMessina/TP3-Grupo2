@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
 
                 val routesWithArrowBack = listOf(
                     "${AppDestination.ProductDetail.route}/{id}",
-                    AppDestination.Categories.route
+                    "${AppDestination.Categories.route}/{id}"
                 )
 
                 Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {

@@ -68,7 +68,7 @@ fun FindProductsScreen(innerPadding: PaddingValues, navController: NavController
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             items(viewModel.getAllCategories()) { category ->
-                CategoryCard(color = category.color, image = category.image, title = category.name, navController = navController)
+                CategoryCard(id = category.id.toString(), color = category.color, image = category.image, title = category.name, navController = navController)
             }
         }
         if(isSheetopen){

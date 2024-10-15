@@ -28,6 +28,7 @@ fun SearchInput (
 ){
     TextField(
         value = text,
+        singleLine = true,
         onValueChange = {
             onTextChange(it)
         },

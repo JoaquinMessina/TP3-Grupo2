@@ -35,36 +35,21 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.CheckoutBottomSheet
+import ar.edu.ort.parcialtp3grupo2.sections.home.components.Counter
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.Product
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.ProductRepository
+import ar.edu.ort.parcialtp3grupo2.sections.home.screens.productDetail.ProductDetailScreen
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButtonRightText
 import ar.edu.ort.parcialtp3grupo2.ui.components.MyTopAppBar
 import ar.edu.ort.parcialtp3grupo2.ui.navigation.BottomBar
 
-@Preview
-@Composable
-fun MyCartScreen() {
-    Scaffold(
-        topBar = {
-            MyTopAppBar(
-                title = "My Cart",
-                isArrowBack = false,
-                navController = null
-            )
-        },
-        bottomBar = {
-            BottomBar(currentRoute = "Cart") {
-            }
-        }
-    ) { innerPadding ->
-        MyCartContent(modifier = Modifier.padding(innerPadding))
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyCartContent(modifier: Modifier = Modifier) {
+fun MyCartContent(innerPadding: PaddingValues, navController: NavController) {
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true )
     var isSheetopen by remember {
         mutableStateOf(false)
@@ -72,8 +57,11 @@ fun MyCartContent(modifier: Modifier = Modifier) {
     val productRepository = ProductRepository()
     val cartItems = productRepository.getAllData()
 
+
     Column(
-        modifier = modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(innerPadding)
     ) {
         Divider(color = Color.LightGray, thickness = 0.7.dp)
         LazyColumn(
@@ -99,10 +87,11 @@ fun MyCartContent(modifier: Modifier = Modifier) {
 }
 @Composable
 fun ProductRow(product: Product) {
+    var counter by remember { mutableStateOf(0) }
     Row(
         modifier = Modifier
             .width(375.dp)
-            .height(96.98.dp)
+            .height(160.dp)
             .padding(20.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -139,6 +128,7 @@ fun ProductRow(product: Product) {
                 ),
                 modifier = Modifier.align(Alignment.Start)
             )
+            Counter(counter, onDecrement ={ if (counter > 0) counter-- }, onIncrement = {counter++})
         }
         Text(
             text = "$${product.price}",
@@ -155,10 +145,4 @@ fun ProductRow(product: Product) {
                 .wrapContentWidth(Alignment.End)
         )
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyCartScreen()
 }

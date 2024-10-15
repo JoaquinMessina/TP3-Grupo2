@@ -190,8 +190,4 @@ fun FavIcon() {
     )
 }
 
-@Preview (showBackground = true)
-@Composable
-fun test(){
-    ProductDetailScreen(innerPadding = PaddingValues(), "3")
-}
+

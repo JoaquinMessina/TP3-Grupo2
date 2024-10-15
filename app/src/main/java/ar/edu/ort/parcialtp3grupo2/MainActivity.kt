@@ -5,9 +5,13 @@ import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
 import ar.edu.ort.parcialtp3grupo2.ui.theme.BrandTheme
@@ -32,7 +36,9 @@ class MainActivity : ComponentActivity() {
                 )
 
         setContent {
-            BrandTheme {
+            var isDarkTheme by remember { mutableStateOf(false) }
+
+            BrandTheme(darkTheme = isDarkTheme) {
                 val navController = rememberNavController()
                 val currentBackStackEntry by navController.currentBackStackEntryAsState()
 
@@ -79,7 +85,7 @@ class MainActivity : ComponentActivity() {
                         navController = navController
                     )
                 }) { innerPadding ->
-                    NavGraph(navController = navController, innerPadding = innerPadding)
+                    NavGraph(navController = navController, innerPadding = innerPadding, isDarkTheme = isDarkTheme, onThemeChange = { isDarkTheme = it })
                 }
             }
         }

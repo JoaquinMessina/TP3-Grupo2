@@ -37,8 +37,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.CheckoutBottomSheet
+import ar.edu.ort.parcialtp3grupo2.sections.home.components.Counter
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.Product
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.ProductRepository
+import ar.edu.ort.parcialtp3grupo2.sections.home.screens.productDetail.ProductDetailScreen
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButtonRightText
 
 
@@ -52,9 +54,8 @@ fun MyCartContent(innerPadding: PaddingValues, navController: NavController) {
     val productRepository = ProductRepository()
     val cartItems = productRepository.getAllData()
 
+
     Column(
-        modifier = Modifier.fillMaxSize()
-            .padding()
     ) {
         Divider(color = Color.LightGray, thickness = 0.7.dp)
         LazyColumn(
@@ -79,10 +80,11 @@ fun MyCartContent(innerPadding: PaddingValues, navController: NavController) {
 }
 @Composable
 fun ProductRow(product: Product) {
+    var counter by remember { mutableStateOf(0) }
     Row(
         modifier = Modifier
             .width(375.dp)
-            .height(96.98.dp)
+            .height(160.dp)
             .padding(20.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -119,6 +121,7 @@ fun ProductRow(product: Product) {
                 ),
                 modifier = Modifier.align(Alignment.Start)
             )
+            Counter(counter, onDecrement ={ if (counter > 0) counter-- }, onIncrement = {counter++})
         }
         Text(
             text = "$${product.price}",

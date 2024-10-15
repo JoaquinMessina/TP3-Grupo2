@@ -55,8 +55,7 @@ fun ItemRow(label: String, fontSize: Int, color: Color, rightContent: Any, image
                 if (rightContent is String) {
                     Text(
                         text = rightContent,
-                        fontSize = fontSize.sp,
-                        color = Color.Black
+                        fontSize = fontSize.sp
                     )
                 } else if (rightContent is Int) {
                     Image(

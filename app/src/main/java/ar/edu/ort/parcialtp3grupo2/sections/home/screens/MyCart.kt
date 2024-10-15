@@ -115,7 +115,6 @@ fun ProductRow(product: Product) {
                     text = product.name,
                     style = TextStyle(
                         fontSize = 16.sp,
-                        color = Color(0xFF181725),
                         letterSpacing = 0.01.sp,
                         lineHeight = 18.sp
                     )
@@ -148,7 +147,6 @@ fun ProductRow(product: Product) {
                     text = "$${product.price}",
                     style = TextStyle(
                         fontSize = 16.sp,
-                        color = Color(0xFF181725),
                         letterSpacing = 0.01.sp,
                         lineHeight = 27.sp
                     ),

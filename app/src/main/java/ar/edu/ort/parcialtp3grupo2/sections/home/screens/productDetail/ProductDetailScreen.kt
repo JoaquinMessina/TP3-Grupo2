@@ -22,6 +22,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -134,9 +135,9 @@ fun ProductDetailBody(prod: Product, counter: Int, onIncrement: () -> Unit, onDe
     Divider(color = Color.LightGray, thickness = 0.7.dp)
     ProductDetailExpandableRow(title = "Product Detail", detail = prod.detail)
     Divider(color = Color.LightGray, thickness = 0.7.dp)
-    ItemRow(label = "Nutritions", 16,  Color.Black,rightContent = R.drawable.gains, 33)
+    ItemRow(label = "Nutritions", 16, MaterialTheme.colorScheme.tertiary, rightContent = R.drawable.gains, 33)
     Divider(color = Color.LightGray, thickness = 0.7.dp)
-    ItemRow(label = "Review", 16,  Color.Black,rightContent = R.drawable.stars, 90)
+    ItemRow(label = "Review", 16, MaterialTheme.colorScheme.tertiary, rightContent = R.drawable.stars, 90)
 }
 
 

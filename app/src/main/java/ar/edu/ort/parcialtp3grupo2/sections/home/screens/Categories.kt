@@ -25,6 +25,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
@@ -70,7 +71,7 @@ fun ProductCardCat(product: Product) {
     Column(
         modifier = Modifier
             .size(width = 173.32.dp, height = 248.51.dp)
-            .border(BorderStroke(1.dp, Color(0x1A333333)), RoundedCornerShape(32.dp))
+            .border(BorderStroke(1.dp, MaterialTheme.colorScheme.outline), RoundedCornerShape(32.dp))
             .padding(16.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -96,7 +97,7 @@ fun ProductCardCat(product: Product) {
             Text(
                 text = "${product.amount}, Price",
                 fontSize = 14.sp,
-                color = Color(0xFF7C7C7C),
+                color = MaterialTheme.colorScheme.secondary,
                 lineHeight = 18.sp,
                 fontWeight = FontWeight.Medium,
                 modifier = Modifier
@@ -128,7 +129,7 @@ fun SymbolButtonCat(symbol: String, onClick: () -> Unit) {
         contentPadding = PaddingValues(0.dp),
         shape = RoundedCornerShape(12.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color(0xFF53B175)
+            containerColor = MaterialTheme.colorScheme.primary
         ),
         elevation = ButtonDefaults.buttonElevation(0.dp)
     ) {

@@ -105,14 +105,14 @@ fun BackButton(navController: NavController) {
             .height(60.dp)
             .padding(horizontal = 16.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color.Transparent,
-            contentColor = Color.Black
+            containerColor = Color.Transparent
         )
     ) {
         Text(
             text = "Back to Home",
             fontSize = 16.sp,
-            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
+            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+            color = MaterialTheme.colorScheme.tertiary
         )
     }
 }

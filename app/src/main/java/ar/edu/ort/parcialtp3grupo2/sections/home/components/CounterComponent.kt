@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -53,7 +54,7 @@ fun Counter(count: Int, onIncrement: () -> Unit, onDecrement: () -> Unit) {
 
         Box(
             modifier = Modifier
-                .border(BorderStroke(1.dp, Color.LightGray), RoundedCornerShape(20.dp))
+                .border(BorderStroke(1.dp, MaterialTheme.colorScheme.outline), RoundedCornerShape(20.dp))
                 .padding(16.dp)
                 .height(20.dp)
         ) {

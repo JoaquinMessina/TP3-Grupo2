@@ -57,8 +57,8 @@ fun BottomBar (
            .clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
    ){
        BottomNavigation(
-           contentColor = Color.Black,
-           backgroundColor = Color.White,
+           contentColor = MaterialTheme.colorScheme.tertiary,
+           backgroundColor = MaterialTheme.colorScheme.background,
            elevation = 16.dp,
            modifier = Modifier
                .border(
@@ -69,12 +69,12 @@ fun BottomBar (
                        topEnd = 32.dp
                    ),
                )
-               .background(Color.White)
+               .background(MaterialTheme.colorScheme.background)
                .fillMaxWidth(),
        ){
            bottomNavItems.forEach { item ->
                val isSelected = currentRoute == item.route
-               val color =  if(isSelected) Color(0xFF53B175) else Color.Black
+               val color =  if(isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.tertiary
                BottomNavigationItem(
                    modifier = Modifier.padding(0.dp, 12.dp),
                    icon = { Icon(imageVector = item.icon, contentDescription = item.label,tint = color, modifier = Modifier.size(20.dp)) },

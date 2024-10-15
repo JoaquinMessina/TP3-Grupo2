@@ -44,12 +44,14 @@ class MainActivity : ComponentActivity() {
 
                 val nonTopBarRoutes = listOf(
                     AppDestination.Auth.route,
+                    AppDestination.OrderAccepted.route
                 )
 
                 val nonBottomBarRoutes = listOf(
                     AppDestination.Auth.route,
                     AppDestination.ProductDetail.route,
-                    AppDestination.Categories.route
+                    AppDestination.Categories.route,
+                    AppDestination.OrderAccepted.route
                 )
 
                 val routesWithArrowBack = listOf(

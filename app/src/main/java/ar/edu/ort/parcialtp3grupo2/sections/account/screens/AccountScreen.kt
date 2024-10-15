@@ -43,9 +43,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButton
+import ar.edu.ort.parcialtp3grupo2.ui.navigation.AppDestination
+import ar.edu.ort.parcialtp3grupo2.ui.navigation.BottomNavItem
 
 @Composable
-fun AccountScreen(innerPadding: PaddingValues, isDarkTheme: Boolean, onThemeChange: (Boolean) -> Unit) {
+fun AccountScreen(innerPadding: PaddingValues, isDarkTheme: Boolean, onThemeChange: (Boolean) -> Unit, navController: NavController) {
 
     Column(
         modifier = Modifier
@@ -103,7 +105,7 @@ fun AccountScreen(innerPadding: PaddingValues, isDarkTheme: Boolean, onThemeChan
            DarkModeItem(isDarkTheme, onThemeChange)
            HorizontalDivider(thickness = 1.dp)
            
-           GreenButton(onClick = { /*TODO*/ }, text ="Log Out", isInverted = true, leftIcon = Icons.AutoMirrored.Filled.ExitToApp)
+           GreenButton(onClick = { navController.navigate(AppDestination.Shop.route) }, text ="Log Out", isInverted = true, leftIcon = Icons.AutoMirrored.Filled.ExitToApp)
        }
 
     }

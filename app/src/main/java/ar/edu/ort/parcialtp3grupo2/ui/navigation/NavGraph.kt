@@ -30,6 +30,7 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
                 innerPadding = innerPadding
             )
 
+
         }
 
         composable(AppDestination.Shop.route) {
@@ -59,7 +60,7 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
             CategoriesScreen(innerPadding = innerPadding)
         }
         composable(AppDestination.Favourites.route) {
-            MyFavoriteScreen()
+            MyFavoriteScreen(navController)
         }
 
     }

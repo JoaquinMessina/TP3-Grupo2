@@ -32,7 +32,6 @@ fun Onboarding(
 ) {
     Box(
         modifier = Modifier
-            .padding(innerPadding)
             .fillMaxSize()
             .background(Color.White)
     ) {

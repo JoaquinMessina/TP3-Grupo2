@@ -51,7 +51,6 @@ fun Login(
         modifier = Modifier
             .padding(innerPadding)
             .fillMaxSize()
-            .background(Color.White)
     ) {
         Image(
             painter = painterResource(id = R.drawable.login_background),

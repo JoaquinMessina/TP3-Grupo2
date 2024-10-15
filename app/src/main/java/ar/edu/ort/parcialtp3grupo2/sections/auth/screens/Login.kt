@@ -3,6 +3,7 @@ package ar.edu.ort.parcialtp3grupo2.sections.auth.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -26,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import ar.edu.ort.parcialtp3grupo2.R
+import ar.edu.ort.parcialtp3grupo2.sections.auth.components.AlertDialog
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.AuthViewModel
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.GenericTextField
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.PasswordTextField
@@ -45,18 +48,23 @@ fun Login(
     var (email, setEmail) = remember { mutableStateOf("") }
     var (password, setPassword) =  remember { mutableStateOf("") }
     val coroutineScope = rememberCoroutineScope()
+    val shouldShowDialog = remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
             .padding(innerPadding)
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.login_background),
-            contentDescription = "login background",
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop
-        )
+        if(!isSystemInDarkTheme()) {
+            Image(
+                painter = painterResource(id = R.drawable.login_background),
+                contentDescription = "login background",
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop
+            )
+        }
+
         Column(
             modifier = Modifier
                 .align(Alignment.TopCenter)
@@ -93,6 +101,10 @@ fun Login(
                     .align(alignment = Alignment.End)
                     .padding(16.dp))
 
+            if (shouldShowDialog.value) {
+                AlertDialog(shouldShowDialog = shouldShowDialog, topText = "Wrong Credentials", message = "The Username or Password is Incorrect. Try again.")
+            }
+
 
             GreenButton(onClick = {
 
@@ -101,12 +113,13 @@ fun Login(
                     if(token != null) {
                         authNavhostController.navigate(AuthDestination.Location.route)
                     } else {
-                        /* TODO */
+                        shouldShowDialog.value = true
+
                     }
                 }
 
 
-                                  },
+            },
                 text = "Log In")
 
             Row {
@@ -115,7 +128,7 @@ fun Login(
 
                 Text(text = "Singup",
                     modifier = Modifier.clickable {
-                         authNavhostController.navigate(AuthDestination.Register.route)                    },
+                        authNavhostController.navigate(AuthDestination.Register.route)                    },
                     color = Color(0xFF53B175))
             }
 

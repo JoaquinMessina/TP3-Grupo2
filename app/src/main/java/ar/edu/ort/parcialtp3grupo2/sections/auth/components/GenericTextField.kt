@@ -29,6 +29,7 @@ fun GenericTextField(text: String, value: String, setValue: (String) -> Unit){
         TextField(
             value = value,
             onValueChange = setValue,
+            singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             colors = TextFieldDefaults.colors(
                 unfocusedContainerColor = Color.Transparent,

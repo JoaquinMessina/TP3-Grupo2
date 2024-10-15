@@ -30,6 +30,7 @@ fun ValidatedTextField(text: String, value: String, setValue: (String) -> Unit, 
         TextField(
             value = value,
             onValueChange = setValue,
+            singleLine = true,
             modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .fillMaxWidth(),

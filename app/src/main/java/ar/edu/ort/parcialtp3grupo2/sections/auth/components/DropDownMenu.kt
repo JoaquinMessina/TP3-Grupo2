@@ -25,7 +25,7 @@ fun DropDownMenuPersonal(text: String, options: List<String>) {
         Text(
             text = text,
             modifier = Modifier.padding(horizontal = 16.dp),
-            color = Color(0xFF7C7C7C),
+            color = MaterialTheme.colorScheme.secondary,
         )
 
         ExposedDropdownMenuBox(
@@ -54,7 +54,7 @@ fun DropDownMenuPersonal(text: String, options: List<String>) {
             ExposedDropdownMenu(
                 expanded = expanded,
                 onDismissRequest = { expanded = false },
-                modifier = Modifier.background(Color.White)
+                modifier = Modifier.background(MaterialTheme.colorScheme.background)
 
             ) {
                 options.forEach { option ->
@@ -64,7 +64,7 @@ fun DropDownMenuPersonal(text: String, options: List<String>) {
                             selectedOption = option
                             expanded = false
                         },
-                        modifier = Modifier.background(Color.White)
+                        modifier = Modifier.background(MaterialTheme.colorScheme.background)
                     )
                 }
             }

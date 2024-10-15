@@ -124,7 +124,7 @@ fun Location(
                 modifier = Modifier
                     .padding(horizontal = 16.dp, vertical = 12.dp),
                 fontSize = 16.sp,
-                color = Color(0xFF7C7C7C),
+                color = MaterialTheme.colorScheme.secondary,
                 textAlign = TextAlign.Center
                 )
 

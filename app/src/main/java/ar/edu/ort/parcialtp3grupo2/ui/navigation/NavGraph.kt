@@ -12,7 +12,7 @@ import ar.edu.ort.parcialtp3grupo2.sections.auth.navigation.AuthNavGraph
 import ar.edu.ort.parcialtp3grupo2.sections.explore.screens.FindProductsScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.account.screens.AccountScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.CategoriesScreen
-import ar.edu.ort.parcialtp3grupo2.sections.home.screens.MyCartScreen
+import ar.edu.ort.parcialtp3grupo2.sections.home.screens.MyCartContent
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.MyFavoriteScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.ShopScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.productDetail.ProductDetailScreen
@@ -38,7 +38,7 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
         }
 
         composable(AppDestination.Cart.route) {
-            MyCartScreen()
+            MyCartContent(innerPadding, navController)
         }
 
         composable(AppDestination.Account.route) {

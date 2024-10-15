@@ -15,6 +15,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.Text
@@ -55,7 +56,6 @@ fun CheckboxBottomSheetContent(onDismiss: () -> Unit, navController: NavControll
         Column (
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color.White)
                 .padding(15.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.Start
@@ -84,24 +84,24 @@ fun CheckboxBottomSheetContent(onDismiss: () -> Unit, navController: NavControll
 
             }
             Divider(color = Color.LightGray, thickness = 0.7.dp)
-            ItemRow("Delivery", 18, Color.Gray, rightContent ="Select Method")
+            ItemRow("Delivery", 18, MaterialTheme.colorScheme.secondary, rightContent ="Select Method")
             Divider(color = Color.LightGray, thickness = 0.7.dp)
-            ItemRow("Pament",18 , Color.Gray, R.drawable.masterlogo)
+            ItemRow("Pament",18 , MaterialTheme.colorScheme.secondary, R.drawable.masterlogo)
             Divider(color = Color.LightGray, thickness = 0.7.dp)
-            ItemRow("Promo Code",18 , Color.Gray, "Pick discount")
+            ItemRow("Promo Code",18 , MaterialTheme.colorScheme.secondary, "Pick discount")
             Divider(color = Color.LightGray, thickness = 0.7.dp)
-            ItemRow("Total Cost",18,  Color.Gray,"$13.97")
+            ItemRow("Total Cost",18,  MaterialTheme.colorScheme.secondary,"$13.97")
             Divider(color = Color.LightGray, thickness = 0.7.dp)
 
             Spacer(modifier = Modifier.height(20.dp))
             Text(
                 text = buildAnnotatedString {
                     append("By placing an order you agree to our\n")
-                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, color = Color.Black)) {
+                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)) {
                         append("Terms")
                     }
                     append(" And ")
-                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, color = Color.Black)) {
+                    withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.tertiary)) {
                         append("Conditions")
                     }
                 },

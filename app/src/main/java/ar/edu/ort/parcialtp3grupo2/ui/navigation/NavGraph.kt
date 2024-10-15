@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.sections.auth.navigation.AuthNavGraph
+import ar.edu.ort.parcialtp3grupo2.sections.auth.screens.SplashScreen
 import ar.edu.ort.parcialtp3grupo2.sections.explore.screens.FindProductsScreen
 import ar.edu.ort.parcialtp3grupo2.sections.explore.screens.SearchScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.account.screens.AccountScreen
@@ -41,7 +42,7 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues, isDa
         }
 
         composable(AppDestination.Account.route) {
-            AccountScreen(innerPadding, isDarkTheme = isDarkTheme, onThemeChange = onThemeChange)
+            AccountScreen(innerPadding, isDarkTheme = isDarkTheme, onThemeChange = onThemeChange, navController)
         }
         composable(AppDestination.Explore.route) {
             FindProductsScreen(innerPadding = innerPadding, navController)

@@ -6,3 +6,4 @@ val BrandGreen = Color(0xFF53B175);
 val BrandGray = Color(0xFF7C7C7C);
 val BrandWhite = Color(0xFFF4F4F4);
 val BrandDark = Color(0xFF1B1B1B);
+val BrandLightGray = Color(0xFFE2E2E2)

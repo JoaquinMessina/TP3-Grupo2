@@ -111,7 +111,8 @@ fun BackButton(navController: NavController) {
         Text(
             text = "Back to Home",
             fontSize = 16.sp,
-            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold)
+            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+            color = MaterialTheme.colorScheme.tertiary
         )
     }
 }

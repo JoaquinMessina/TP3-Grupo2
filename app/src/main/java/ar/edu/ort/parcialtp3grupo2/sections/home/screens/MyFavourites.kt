@@ -19,6 +19,7 @@ import androidx.compose.material.Divider
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -118,7 +119,6 @@ fun ProductRowFav(product: Product) {
                     text = product.name,
                     style = TextStyle(
                         fontSize = 16.sp,
-                        color = Color(0xFF181725),
                         letterSpacing = 0.01.sp,
                         lineHeight = 18.sp
                     )
@@ -127,7 +127,7 @@ fun ProductRowFav(product: Product) {
                     text = "${product.amount}, Price",
                     style = TextStyle(
                         fontSize = 14.sp,
-                        color = Color(0xFF7C7C7C),
+                        color = MaterialTheme.colorScheme.secondary,
                         lineHeight = 18.sp,
                         letterSpacing = 0.sp
                     )
@@ -137,7 +137,6 @@ fun ProductRowFav(product: Product) {
                 text = "$${product.price}",
                 style = TextStyle(
                     fontSize = 18.sp,
-                    color = Color(0xFF181725),
                     letterSpacing = 0.01.sp,
                     lineHeight = 27.sp
                 ),

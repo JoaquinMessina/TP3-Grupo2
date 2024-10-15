@@ -78,7 +78,7 @@ fun MyCartContent(innerPadding: PaddingValues, navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
         GreenButtonRightText(onClick = { isSheetopen = true }, text = "Go to Checkout", rightText = "$1500")
         if (isSheetopen) {
-            CheckoutBottomSheet(onDismiss = { isSheetopen = false }, sheetState = sheetState)
+            CheckoutBottomSheet(onDismiss = { isSheetopen = false }, sheetState = sheetState, navController)
         }
     }
 }
@@ -123,7 +123,6 @@ fun ProductRow(product: Product) {
                 Icon(
                     imageVector = Icons.Default.Close,
                     contentDescription = "Close",
-                    tint = Color.Black,
                     modifier = Modifier
                         .padding(start = 8.dp)
                         .size(24.dp)

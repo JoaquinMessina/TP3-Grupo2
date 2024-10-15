@@ -59,8 +59,7 @@ fun Counter(count: Int, onIncrement: () -> Unit, onDecrement: () -> Unit) {
         ) {
             Text(
                 text = count.toString(),
-                fontSize = 20.sp,
-                color = Color.Black
+                fontSize = 20.sp
             )
         }
 

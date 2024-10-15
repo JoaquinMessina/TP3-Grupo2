@@ -67,7 +67,7 @@ fun OrderAcceptedScreen(innerPadding: PaddingValues, navController: NavControlle
         ) {
             GreenButtonRightText(onClick = { navController.navigate(AppDestination.Shop.route) }, text = "Track Order")
             BackButton(navController)
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(24.dp))
         }
     }
 }

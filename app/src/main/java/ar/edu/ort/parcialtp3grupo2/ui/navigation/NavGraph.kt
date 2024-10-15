@@ -30,7 +30,6 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues, isDa
                 innerPadding = innerPadding
             )
         }
-
         composable(AppDestination.Shop.route) {
            ShopScreen(innerPadding, navController)
         }

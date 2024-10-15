@@ -36,15 +36,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.CheckoutBottomSheet
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.Counter
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.Product
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.ProductRepository
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.productDetail.ProductDetailScreen
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButtonRightText
-import ar.edu.ort.parcialtp3grupo2.ui.components.MyTopAppBar
-import ar.edu.ort.parcialtp3grupo2.ui.navigation.BottomBar
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -59,9 +56,6 @@ fun MyCartContent(innerPadding: PaddingValues, navController: NavController) {
 
 
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(innerPadding)
     ) {
         Divider(color = Color.LightGray, thickness = 0.7.dp)
         LazyColumn(
@@ -81,7 +75,6 @@ fun MyCartContent(innerPadding: PaddingValues, navController: NavController) {
         GreenButtonRightText(onClick = { isSheetopen = true }, text="Go to Checkout", rightText = "$1500")
         if(isSheetopen){
             CheckoutBottomSheet(onDismiss = { isSheetopen = false }, sheetState = sheetState)
-
         }
     }
 }

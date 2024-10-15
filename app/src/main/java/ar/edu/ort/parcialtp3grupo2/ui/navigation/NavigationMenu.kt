@@ -76,14 +76,21 @@ fun BottomBar (
                val isSelected = currentRoute == item.route
                val color =  if(isSelected) Color(0xFF53B175) else Color.Black
                BottomNavigationItem(
-                   modifier = Modifier.padding(0.dp, 8.dp),
+                   modifier = Modifier.padding(0.dp, 12.dp),
                    icon = { Icon(imageVector = item.icon, contentDescription = item.label,tint = color, modifier = Modifier.size(20.dp)) },
-                   label = { Text(text = item.label, color = color, fontSize = 8.sp, fontWeight = FontWeight.Bold) },
-
+                   label = { Text(text = item.label, color = color, fontSize = 10.sp, fontWeight = FontWeight.Bold) },
                    selected = false,
                    onClick = { onNavigate(item.route) }
                )
            }
        }
    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun BottomBarPreview(){
+    MaterialTheme {
+        BottomBar(currentRoute = "shop", onNavigate = {})
+    }
 }

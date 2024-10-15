@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ar.edu.ort.parcialtp3grupo2.R
@@ -22,15 +23,16 @@ import ar.edu.ort.parcialtp3grupo2.R
 fun ShopBanner(){
     Row (
         modifier = Modifier
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 8.dp)
             .fillMaxWidth()
-            .height(100.dp),
+            .height(200.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
 
         ){
         Image(painter = painterResource(id = R.drawable.banner),
             contentDescription = null,
-            modifier = Modifier.fillMaxWidth())
+            modifier = Modifier.height(400.dp).fillMaxWidth()
+        )
     }
 }

@@ -33,7 +33,6 @@ fun ShopScreen(innerPadding: PaddingValues, navController: NavController) {
         Spacer(modifier = Modifier.height(16.dp))
 
         ShopBanner()
-        Spacer(modifier = Modifier.height(16.dp))
 
         ProductSection(title="Exclusive Offer", viewModel.products, navController)
         Spacer(modifier = Modifier.height(16.dp))

@@ -46,7 +46,6 @@ fun Login(
     var (password, setPassword) =  remember { mutableStateOf("") }
     val coroutineScope = rememberCoroutineScope()
 
-
     Box(
         modifier = Modifier
             .padding(innerPadding)
@@ -63,21 +62,17 @@ fun Login(
                 .align(Alignment.TopCenter)
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
-
         ) {
             Image(painter = painterResource(id = R.drawable.colored_carrot),
                 contentDescription = "carrot",
                 modifier = Modifier.padding(56.dp)
             )
-
             Text(text = "Loging",
                 modifier = Modifier
                     .align(alignment = Alignment.Start)
                     .padding(horizontal = 16.dp),
                 fontSize = 26.sp,
                 fontWeight = FontWeight.Bold)
-
-
             Text(text = "Enter your emails and password",
                 modifier = Modifier
                     .align(alignment = Alignment.Start)
@@ -104,8 +99,8 @@ fun Login(
                 coroutineScope.launch {
                     val token = viewModel.login(email, password)
                     if(token != null) {
-                    } else {
                         authNavhostController.navigate(AuthDestination.Location.route)
+                    } else {
                         /* TODO */
                     }
                 }

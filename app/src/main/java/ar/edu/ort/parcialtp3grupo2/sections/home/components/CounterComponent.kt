@@ -51,7 +51,6 @@ fun Counter(count: Int, onIncrement: () -> Unit, onDecrement: () -> Unit) {
             modifier = Modifier.clickable { onDecrement() }
                 .padding(end = 10.dp))
 
-
         Box(
             modifier = Modifier
                 .border(BorderStroke(1.dp, Color.LightGray), RoundedCornerShape(20.dp))

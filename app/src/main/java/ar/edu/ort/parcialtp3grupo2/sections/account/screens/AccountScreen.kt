@@ -45,7 +45,7 @@ import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButton
 
 @Composable
-fun AccountScreen(innerPadding: PaddingValues) {
+fun AccountScreen(innerPadding: PaddingValues, isDarkTheme: Boolean, onThemeChange: (Boolean) -> Unit) {
 
     Column(
         modifier = Modifier
@@ -100,7 +100,7 @@ fun AccountScreen(innerPadding: PaddingValues) {
            HorizontalDivider(thickness = 1.dp)
            Item(icon = Icons.Outlined.Help, name = "Help")
            HorizontalDivider(thickness = 1.dp)
-           DarkModeItem()
+           DarkModeItem(isDarkTheme, onThemeChange)
            HorizontalDivider(thickness = 1.dp)
            
            GreenButton(onClick = { /*TODO*/ }, text ="Log Out", isInverted = true, leftIcon = Icons.AutoMirrored.Filled.ExitToApp)
@@ -139,31 +139,38 @@ fun Item (icon: ImageVector, name: String){
 }
 
 @Composable
-fun DarkModeItem (){
-    Row (
+fun DarkModeItem(isDarkTheme: Boolean, onThemeChange: (Boolean) -> Unit) {
+    Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth(),
-    ){
-        Row (
+    ) {
+        Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier
                 .fillMaxWidth(),
-        ){
+        ) {
             Text(text = "", fontWeight = FontWeight.Bold, fontSize = 20.sp)
-            Text(text = "Dark Mode", fontWeight = FontWeight.Bold, fontSize = 18.sp, color = MaterialTheme.colorScheme.tertiary)
+            Text(
+                text = "Dark Mode",
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp,
+                color = MaterialTheme.colorScheme.tertiary
+            )
             Spacer(modifier = Modifier.weight(1f))
-            Switch(checked = isSystemInDarkTheme(), colors = SwitchDefaults.colors(
-                checkedThumbColor = MaterialTheme.colorScheme.primary,
-                checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
-                uncheckedThumbColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.4f),
-                uncheckedTrackColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.2f),
-            ), onCheckedChange = fun(checked: Boolean) {
 
-
-            })
+            Switch(
+                checked = isDarkTheme,
+                onCheckedChange = { checked -> onThemeChange(checked) },
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = MaterialTheme.colorScheme.primary,
+                    checkedTrackColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                    uncheckedThumbColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.4f),
+                    uncheckedTrackColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.2f)
+                )
+            )
         }
     }
 }

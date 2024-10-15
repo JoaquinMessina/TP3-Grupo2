@@ -20,7 +20,7 @@ import ar.edu.ort.parcialtp3grupo2.sections.orderAccepted.OrderAcceptedScreen
 
 
 @Composable
-fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
+fun NavGraph(navController: NavHostController, innerPadding: PaddingValues, isDarkTheme: Boolean, onThemeChange: (Boolean) -> Unit) {
     NavHost(navController = navController, startDestination = AppDestination.Auth.route) {
         composable(AppDestination.Auth.route) {
             var authNavController = rememberNavController()
@@ -29,8 +29,6 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
                 globalController = navController,
                 innerPadding = innerPadding
             )
-
-
         }
 
         composable(AppDestination.Shop.route) {
@@ -42,7 +40,7 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
         }
 
         composable(AppDestination.Account.route) {
-            AccountScreen(innerPadding)
+            AccountScreen(innerPadding, isDarkTheme = isDarkTheme, onThemeChange = onThemeChange)
         }
         composable(AppDestination.Explore.route) {
             FindProductsScreen(innerPadding = innerPadding)

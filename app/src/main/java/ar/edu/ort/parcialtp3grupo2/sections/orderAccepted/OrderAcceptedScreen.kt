@@ -25,12 +25,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButtonRightText
+import ar.edu.ort.parcialtp3grupo2.ui.navigation.AppDestination
 
 
 @Composable
-fun OrderAcceptedScreen(innerPadding: PaddingValues) {
+fun OrderAcceptedScreen(innerPadding: PaddingValues, navController: NavController) {
     Column(
         modifier = Modifier
             .padding(innerPadding)
@@ -63,8 +65,8 @@ fun OrderAcceptedScreen(innerPadding: PaddingValues) {
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            GreenButtonRightText(onClick = { /*TODO*/ }, text = "Track Order")
-            BackButton( )
+            GreenButtonRightText(onClick = { navController.navigate(AppDestination.Shop.route) }, text = "Track Order")
+            BackButton(navController)
             Spacer(modifier = Modifier.height(16.dp))
         }
     }
@@ -95,9 +97,9 @@ fun OrderAcceptedBody() {
 }
 
 @Composable
-fun BackButton() {
+fun BackButton(navController: NavController) {
     Button(
-        onClick = { },
+        onClick = {navController.navigate(AppDestination.Shop.route)},
         modifier = Modifier
             .fillMaxWidth()
             .height(60.dp)

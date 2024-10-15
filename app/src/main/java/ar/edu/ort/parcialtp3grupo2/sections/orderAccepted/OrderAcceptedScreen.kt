@@ -105,8 +105,7 @@ fun BackButton(navController: NavController) {
             .height(60.dp)
             .padding(horizontal = 16.dp),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Color.Transparent,
-            contentColor = Color.Black
+            containerColor = Color.Transparent
         )
     ) {
         Text(

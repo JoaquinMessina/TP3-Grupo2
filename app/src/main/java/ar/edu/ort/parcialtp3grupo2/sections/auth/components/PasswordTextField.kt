@@ -9,6 +9,7 @@ import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -32,7 +33,7 @@ fun PasswordTextField(value: String, setValue: (String) -> Unit) {
     Column {
         Text(text = "Password",
             modifier = Modifier.padding(horizontal = 16.dp),
-            color = Color(0xFF7C7C7C),
+            color = MaterialTheme.colorScheme.secondary,
         )
 
         TextField(
@@ -53,7 +54,7 @@ fun PasswordTextField(value: String, setValue: (String) -> Unit) {
                 IconButton(onClick = { setPasswordVisible(!passwordVisible) }) {
                     Icon(image,
                         contentDescription = description,
-                        tint = Color(0xFF7C7C7C))
+                        tint = MaterialTheme.colorScheme.secondary)
                 }
             },
             modifier = Modifier

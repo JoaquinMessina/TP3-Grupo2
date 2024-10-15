@@ -91,7 +91,7 @@ fun Login(
                     .align(alignment = Alignment.Start)
                     .padding(horizontal = 16.dp, vertical = 12.dp),
                 fontSize = 16.sp,
-                color = Color(0xFF7C7C7C),)
+                color = MaterialTheme.colorScheme.secondary)
 
             Spacer(modifier = Modifier.height(30.dp))
 
@@ -134,7 +134,7 @@ fun Login(
                 Text(text = "Singup",
                     modifier = Modifier.clickable {
                         authNavhostController.navigate(AuthDestination.Register.route)                    },
-                    color = Color(0xFF53B175))
+                    color = MaterialTheme.colorScheme.primary)
             }
 
         }

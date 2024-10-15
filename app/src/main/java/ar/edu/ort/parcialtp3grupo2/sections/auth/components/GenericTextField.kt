@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -23,7 +24,7 @@ fun GenericTextField(text: String, value: String, setValue: (String) -> Unit){
     Column {
         Text(text = text,
             modifier = Modifier.padding(horizontal = 16.dp),
-            color = Color(0xFF7C7C7C),
+            color = MaterialTheme.colorScheme.secondary,
         )
 
         TextField(

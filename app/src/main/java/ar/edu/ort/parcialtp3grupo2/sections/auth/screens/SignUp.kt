@@ -92,7 +92,7 @@ fun SignUp(
                     .align(alignment = Alignment.Start)
                     .padding(horizontal = 16.dp, vertical = 12.dp),
                 fontSize = 16.sp,
-                color = Color(0xFF7C7C7C),)
+                color = MaterialTheme.colorScheme.secondary)
 
             Spacer(modifier = Modifier.height(30.dp))
 
@@ -114,12 +114,12 @@ fun SignUp(
                     .padding(horizontal = 16.dp)) {
 
                 Text(text = "By continuing you agree to our ",
-                    color = Color(0xFF7C7C7C),
+                    color = MaterialTheme.colorScheme.secondary,
                     fontSize = 12.sp,
                 )
 
                 Text(text = "Terms of Service", modifier = Modifier.clickable {  },
-                    color = Color(0xFF53B175),
+                    color = MaterialTheme.colorScheme.primary,
                     fontSize = 12.sp,
 
                     )
@@ -132,14 +132,14 @@ fun SignUp(
                     .padding(horizontal = 16.dp)) {
 
                 Text(text = "and ",
-                    color = Color(0xFF7C7C7C),
+                    color = MaterialTheme.colorScheme.secondary,
                     fontSize = 12.sp,
                 )
 
                 Text(text = "Privacy Policy.",
                     modifier = Modifier
                         .clickable { },
-                    color = Color(0xFF53B175),
+                    color = MaterialTheme.colorScheme.primary,
                     fontSize = 12.sp,)
             }
 
@@ -165,7 +165,7 @@ fun SignUp(
                 Text(text = "Sign in",
                     modifier = Modifier.clickable {
                         authController.navigate(AuthDestination.Login.route)                    },
-                    color = Color(0xFF53B175))
+                    color = MaterialTheme.colorScheme.primary)
 
             }
 

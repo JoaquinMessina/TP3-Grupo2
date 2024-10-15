@@ -10,17 +10,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun AlertDialog(shouldShowDialog: MutableState<Boolean>, topText: String, message: String) {
-    val contentColor = if(isSystemInDarkTheme()) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.background
 
     if (shouldShowDialog.value) {
         AlertDialog(
             onDismissRequest = {
                 shouldShowDialog.value = false
             },
-            backgroundColor = MaterialTheme.colorScheme.secondary,
+            backgroundColor = Color.White,
             title = { Text(text = topText) },
             text = { Text(text = message) },
             confirmButton = {

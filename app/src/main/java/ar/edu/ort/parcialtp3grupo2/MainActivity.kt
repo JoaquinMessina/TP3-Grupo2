@@ -48,11 +48,13 @@ class MainActivity : ComponentActivity() {
 
                 val nonBottomBarRoutes = listOf(
                     AppDestination.Auth.route,
-                    AppDestination.ProductDetail.route
+                    AppDestination.ProductDetail.route,
+                    AppDestination.Categories.route
                 )
 
                 val routesWithArrowBack = listOf(
-                    "${AppDestination.ProductDetail.route}/{id}"
+                    "${AppDestination.ProductDetail.route}/{id}",
+                    AppDestination.Categories.route
                 )
 
                 Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {

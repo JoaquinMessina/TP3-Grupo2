@@ -26,14 +26,13 @@ import androidx.compose.material3.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
-import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.ConfirmationNumber
 import androidx.compose.material.icons.filled.CreditCard
-import androidx.compose.material.icons.filled.Help
-import androidx.compose.material.icons.filled.LocalMall
-import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.ShoppingBag
+import androidx.compose.material.icons.outlined.AccountBox
+import androidx.compose.material.icons.outlined.ConfirmationNumber
+import androidx.compose.material.icons.outlined.Help
+import androidx.compose.material.icons.outlined.LocalMall
+import androidx.compose.material.icons.outlined.LocationOn
+import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
@@ -87,19 +86,19 @@ fun AccountScreen(innerPadding: PaddingValues,navController: NavController) {
               verticalArrangement = Arrangement.spacedBy(0.dp),
        ) {
            HorizontalDivider(thickness = 1.dp)
-           Item(icon = Icons.Default.LocalMall, name = "Orders")
+           Item(icon = Icons.Outlined.LocalMall, name = "Orders")
            HorizontalDivider(thickness = 1.dp)
-           Item(icon = Icons.Default.AccountBox, name = "My Details")
+           Item(icon = Icons.Outlined.AccountBox, name = "My Details")
            HorizontalDivider(thickness = 1.dp)
-           Item(icon = Icons.Default.LocationOn, name = "Delivery Address")
+           Item(icon = Icons.Outlined.LocationOn, name = "Delivery Address")
            HorizontalDivider(thickness = 1.dp)
            Item(icon = Icons.Default.CreditCard, name = "Payment Methods")
            HorizontalDivider(thickness = 1.dp)
-           Item(icon = Icons.Default.ConfirmationNumber, name = "Promo Card")
+           Item(icon = Icons.Outlined.ConfirmationNumber, name = "Promo Card")
            HorizontalDivider(thickness = 1.dp)
-           Item(icon = Icons.Default.Notifications, name = "Notification")
+           Item(icon = Icons.Outlined.Notifications, name = "Notification")
            HorizontalDivider(thickness = 1.dp)
-           Item(icon = Icons.Default.Help, name = "Help")
+           Item(icon = Icons.Outlined.Help, name = "Help")
            HorizontalDivider(thickness = 1.dp)
            DarkModeItem()
            HorizontalDivider(thickness = 1.dp)
@@ -167,4 +166,11 @@ fun DarkModeItem (){
             })
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun test(){
+    AccountScreen(innerPadding = PaddingValues(), navController = rememberNavController()
+    )
 }

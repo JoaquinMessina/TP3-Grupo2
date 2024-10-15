@@ -6,6 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,6 +24,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.substring
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -46,18 +49,18 @@ fun ProductCard(product: Product, navController: NavController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Row (
+        Box (
             modifier = Modifier
                 .fillMaxWidth()
                 .height(150.dp)
                 .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+            contentAlignment = Alignment.Center
+
         ){
             Image(painter = painterResource(id = product.image) , contentDescription = null)
         }
         Column(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().height(70.dp)
         ) {
             Text(
                 text = product.name,
@@ -68,6 +71,8 @@ fun ProductCard(product: Product, navController: NavController) {
                 text = product.detail,
                 fontSize = 14.sp,
                 color = Color.Gray,
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 5
             )
 
         }

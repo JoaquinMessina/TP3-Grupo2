@@ -58,6 +58,7 @@ fun SearchInput (
         ),
         modifier = Modifier
             .width(500.dp)
-            .padding(horizontal = 16.dp)
+            
+            .padding(horizontal = 16.dp, vertical = 16.dp)
     )
 }

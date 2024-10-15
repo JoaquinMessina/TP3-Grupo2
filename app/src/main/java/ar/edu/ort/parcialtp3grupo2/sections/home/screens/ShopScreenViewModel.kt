@@ -17,14 +17,6 @@ class ShopScreenViewModel : ViewModel() {
     var products by mutableStateOf(productRepository.getAllData())
         private set
 
-    fun addProduct(product: Product) {
-        products = products + product
-    }
-
-    fun removeProduct(product: Product) {
-        products = products - product
-    }
-
     fun getProductById(id: String): Product? {
         return products.find { it.id == id }
     }

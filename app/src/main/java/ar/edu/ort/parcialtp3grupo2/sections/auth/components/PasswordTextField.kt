@@ -25,8 +25,8 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun PasswordTextField() {
-    val (password, setPassword) = remember { mutableStateOf("") }
+fun PasswordTextField(value: String, setValue: (String) -> Unit) {
+
     val (passwordVisible, setPasswordVisible) = remember { mutableStateOf(false) }
 
     Column {
@@ -36,8 +36,8 @@ fun PasswordTextField() {
         )
 
         TextField(
-            value = password,
-            onValueChange = setPassword,
+            value = value,
+            onValueChange = setValue,
             //label = { Text(text = "Password") },
             visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
@@ -63,10 +63,4 @@ fun PasswordTextField() {
     }
 
 
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewPassword() {
-    PasswordTextField()
 }

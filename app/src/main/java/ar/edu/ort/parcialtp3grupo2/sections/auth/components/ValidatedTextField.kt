@@ -18,9 +18,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ValidatedTextField(text: String) {
-    var (email, setEmail) = remember { mutableStateOf("") }
-    val isValidEmail = email == "imshuvo97@gmail.com"
+fun ValidatedTextField(text: String, value: String, setValue: (String) -> Unit, isValid: Boolean = false) {
+
 
     Column {
         Text(
@@ -29,8 +28,8 @@ fun ValidatedTextField(text: String) {
             color = Color(0xFF7C7C7C),
         )
         TextField(
-            value = email,
-            onValueChange = setEmail,
+            value = value,
+            onValueChange = setValue,
             modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .fillMaxWidth(),
@@ -39,7 +38,7 @@ fun ValidatedTextField(text: String) {
                 focusedContainerColor = Color.Transparent
             ),
             trailingIcon = {
-                if (isValidEmail) {
+                if (isValid) {
                     Icon(
                         imageVector = Icons.Filled.Check,
                         contentDescription = "Valid email",
@@ -49,10 +48,4 @@ fun ValidatedTextField(text: String) {
             }
         )
     }
-}
-
-@Composable
-@Preview(showBackground = true)
-fun ValidatedTextFieldPreview(){
-    ValidatedTextField("Email")
 }

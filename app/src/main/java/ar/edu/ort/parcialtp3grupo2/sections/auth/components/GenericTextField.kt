@@ -17,9 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun GenericTextField(text: String){
+fun GenericTextField(text: String, value: String, setValue: (String) -> Unit){
 
-    val (tx, setTx) = remember { mutableStateOf("") }
 
     Column {
         Text(text = text,
@@ -28,8 +27,8 @@ fun GenericTextField(text: String){
         )
 
         TextField(
-            value = tx,
-            onValueChange = setTx,
+            value = value,
+            onValueChange = setValue,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             colors = TextFieldDefaults.colors(
                 unfocusedContainerColor = Color.Transparent,
@@ -44,8 +43,3 @@ fun GenericTextField(text: String){
     }
 }
 
-@Composable
-@Preview(showBackground = true)
-fun GenericTextFieldPreview() {
-    GenericTextField(text = "Email")
-}

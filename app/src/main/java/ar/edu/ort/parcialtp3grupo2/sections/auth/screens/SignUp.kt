@@ -15,6 +15,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -30,6 +32,8 @@ import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.GenericTextField
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.PasswordTextField
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.ValidatedTextField
+import ar.edu.ort.parcialtp3grupo2.sections.auth.data.RetrofitServiceFactory
+import ar.edu.ort.parcialtp3grupo2.sections.auth.data.User
 import ar.edu.ort.parcialtp3grupo2.sections.auth.navigation.AuthDestination
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButton
 
@@ -40,6 +44,9 @@ fun SignUp(
     authController:NavHostController
 ) {
     val scrollState = rememberScrollState()
+    var (email, setEmail) = remember { mutableStateOf("") }
+    var validMail = email.contains("@gmail.com")
+    var (password, setPassword) =  remember { mutableStateOf("") }
 
     Box(
         modifier = Modifier
@@ -82,15 +89,15 @@ fun SignUp(
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            GenericTextField(text = "Username")
+            GenericTextField(text = "Username", value = email, setValue = setEmail)
 
             Spacer(modifier = Modifier.height(36.dp))
 
-            ValidatedTextField(text = "Email")
+            ValidatedTextField(text = "Email", value = email, setValue = setEmail, isValid = validMail)
 
             Spacer(modifier = Modifier.height(36.dp))
 
-            PasswordTextField()
+            PasswordTextField(value = password, setValue = setPassword)
 
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -100,11 +107,14 @@ fun SignUp(
                     .padding(horizontal = 16.dp)) {
 
                 Text(text = "By continuing you agree to our ",
-                    color = Color(0xFF7C7C7C)
+                    color = Color(0xFF7C7C7C),
+                    fontSize = 12.sp,
                 )
 
                 Text(text = "Terms of Service", modifier = Modifier.clickable {  },
-                    color = Color(0xFF53B175)
+                    color = Color(0xFF53B175),
+                    fontSize = 12.sp,
+
                 )
 
             }
@@ -115,13 +125,15 @@ fun SignUp(
                     .padding(horizontal = 16.dp)) {
 
                 Text(text = "and ",
-                    color = Color(0xFF7C7C7C)
+                    color = Color(0xFF7C7C7C),
+                    fontSize = 12.sp,
                 )
 
                 Text(text = "Privacy Policy.",
                     modifier = Modifier
                         .clickable { },
-                    color = Color(0xFF53B175))
+                    color = Color(0xFF53B175),
+                    fontSize = 12.sp,)
             }
 
 
@@ -140,6 +152,8 @@ fun SignUp(
                     color = Color(0xFF53B175))
 
             }
+
+            Spacer(modifier = Modifier.height(36.dp))
 
         }
     }

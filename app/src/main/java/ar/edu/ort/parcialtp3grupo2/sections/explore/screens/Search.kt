@@ -1,15 +1,13 @@
-package ar.edu.ort.parcialtp3grupo2.sections.home.screens
+package ar.edu.ort.parcialtp3grupo2.sections.explore.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,13 +19,13 @@ import androidx.compose.ui.unit.dp
 import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.sections.explore.components.SearchInput
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.Product
-import ar.edu.ort.parcialtp3grupo2.sections.home.data.ProductRepository
-import ar.edu.ort.parcialtp3grupo2.ui.components.MyTopAppBar
-import ar.edu.ort.parcialtp3grupo2.ui.navigation.BottomBar
+import ar.edu.ort.parcialtp3grupo2.sections.home.screens.ProductCardCat
 
-@Preview
 @Composable
-fun SearchScreen() {
+fun SearchScreen(
+    text: String,
+    onTextChange: (String) -> Unit
+) {
     val productRepository =  listOf(
         Product(
             id = "0",
@@ -48,22 +46,16 @@ fun SearchScreen() {
             categoryId = 6
         )
     )
-    var text by remember { mutableStateOf("") }
-    var isSheetOpen by remember {
-        mutableStateOf(false)
-    }
+
 
         Column(
             modifier = Modifier
-                .padding()
+                .padding(start = 16.dp, end = 16.dp, bottom = 16.dp, top = 64.dp)
                 .fillMaxWidth()
         ) {
 
             SearchInput(text = text,
-                onTextChange = fun(newText: String) {
-                    text = newText
-                },
-                onClick = { isSheetOpen = true })
+                onTextChange = onTextChange)
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
                 verticalArrangement = Arrangement.spacedBy(16.dp),

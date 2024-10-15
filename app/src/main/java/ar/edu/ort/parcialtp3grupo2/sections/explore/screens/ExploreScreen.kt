@@ -36,13 +36,23 @@ fun FindProductsScreen(innerPadding: PaddingValues) {
     var isSheetopen by remember {
         mutableStateOf(false)
     }
+
+    if(text != ""){
+        SearchScreen(
+            text = text,
+            onTextChange = fun(newText: String){
+                text = newText
+            }
+        )
+    }else{
     Column (
         modifier = Modifier
             .padding(innerPadding)
             .fillMaxWidth()
     ){
 
-        SearchInput(text = text,
+        SearchInput(
+            text = text,
             onTextChange = fun( newText: String){
             text = newText
         },
@@ -66,11 +76,7 @@ fun FindProductsScreen(innerPadding: PaddingValues) {
         }
 
     }
+    }
 
-}
 
-@Preview
-@Composable
-fun test(){
-    FindProductsScreen(innerPadding = PaddingValues())
 }

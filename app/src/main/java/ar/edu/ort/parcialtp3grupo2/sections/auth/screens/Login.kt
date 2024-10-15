@@ -104,8 +104,8 @@ fun Login(
                 coroutineScope.launch {
                     val token = viewModel.login(email, password)
                     if(token != null) {
-                        authNavhostController.navigate(AuthDestination.Location.route)
                     } else {
+                        authNavhostController.navigate(AuthDestination.Location.route)
                         /* TODO */
                     }
                 }

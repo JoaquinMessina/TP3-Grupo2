@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 fun SearchInput (
     text: String,
     onTextChange: (String) -> Unit,
-    onClick: () -> Unit
+    onClick: (() -> Unit)? = null
 ){
     TextField(
         value = text,
@@ -41,13 +41,15 @@ fun SearchInput (
             )
         },
         trailingIcon = {
-            IconButton(onClick = { onClick() }) {
-                Icon(
-                    tint = MaterialTheme.colorScheme.tertiary,
-                    imageVector =  Icons.Filled.Tune,
-                    contentDescription = "Clear Text"
-                )
-            }
+           if(onClick !== null) {
+               IconButton(onClick = onClick) {
+                   Icon(
+                       tint = MaterialTheme.colorScheme.tertiary,
+                       imageVector = Icons.Default.Tune,
+                       contentDescription = "Filter Icon"
+                   )
+               }
+           }
         },
         shape = RoundedCornerShape(16.dp),
         colors = TextFieldDefaults.colors(

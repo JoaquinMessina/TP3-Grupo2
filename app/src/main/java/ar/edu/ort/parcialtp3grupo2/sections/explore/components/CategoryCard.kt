@@ -24,10 +24,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.navigation.NavController
+import ar.edu.ort.parcialtp3grupo2.ui.navigation.AppDestination
 import ar.edu.ort.parcialtp3grupo2.R as res
 
 @Composable
-fun CategoryCard(color: Color,image:Int, title: String, onClick: () -> Unit) {
+fun CategoryCard(color: Color,image:Int, title: String, navController : NavController) {
     Box(modifier = Modifier
         .width(180.dp)
         .height(190.dp)
@@ -38,7 +40,7 @@ fun CategoryCard(color: Color,image:Int, title: String, onClick: () -> Unit) {
             shape = RoundedCornerShape(18.dp)
         )
         .background(color.copy(alpha = 0.1f), shape = RoundedCornerShape(18.dp))
-        .clickable { onClick() }
+        .clickable { navController.navigate(AppDestination.Categories.route) }
     ) {
         Column(
             modifier = Modifier

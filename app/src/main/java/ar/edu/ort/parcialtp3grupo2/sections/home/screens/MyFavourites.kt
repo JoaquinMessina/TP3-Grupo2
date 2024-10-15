@@ -40,13 +40,13 @@ import ar.edu.ort.parcialtp3grupo2.ui.navigation.BottomBar
 
 
 @Composable
-fun MyFavoriteScreen(navController: NavController) { // Recibe el NavController
+fun MyFavoriteScreen(navController: NavController) {
     Scaffold(
         topBar = {
             MyTopAppBar(
                 title = "My Favorite",
                 isArrowBack = false,
-                navController = navController // Pasa el navController aquí si lo necesitas
+                navController = navController
             )
         },
         bottomBar = {
@@ -54,12 +54,12 @@ fun MyFavoriteScreen(navController: NavController) { // Recibe el NavController
             }
         }
     ) { innerPadding ->
-        MyFavoriteContent(modifier = Modifier.padding(innerPadding), navController = navController) // Pasa el navController
+        MyFavoriteContent(modifier = Modifier.padding(innerPadding), navController = navController)
     }
 }
 
 @Composable
-fun MyFavoriteContent(modifier: Modifier = Modifier, navController: NavController) { // Recibe el NavController
+fun MyFavoriteContent(modifier: Modifier = Modifier, navController: NavController) {
     val productRepository = ProductRepository()
     val cartItems = productRepository.getAllData()
 
@@ -76,15 +76,14 @@ fun MyFavoriteContent(modifier: Modifier = Modifier, navController: NavControlle
         ) {
             items(cartItems) { product ->
                 ProductRowFav(product)
-                Box(modifier = Modifier.padding(horizontal = 25.dp)) { // Ajusta el padding como desees
+                Box(modifier = Modifier.padding(horizontal = 25.dp)) {
                     Divider(color = Color.LightGray, thickness = 0.7.dp)
                 }
             }
         }
         Divider(color = Color.LightGray, thickness = 0.7.dp)
-        // Modifica el GreenButton para usar navController.navigate() y navegar a la pantalla de carrito
         GreenButton(onClick = {
-            navController.navigate(AppDestination.Cart.route) // Navega a la pantalla de Cart
+            navController.navigate(AppDestination.Cart.route)
         }, "Add All To Cart")
     }
 }

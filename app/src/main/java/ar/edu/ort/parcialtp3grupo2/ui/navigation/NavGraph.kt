@@ -10,6 +10,7 @@ import androidx.navigation.navArgument
 import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.sections.auth.navigation.AuthNavGraph
 import ar.edu.ort.parcialtp3grupo2.sections.explore.screens.FindProductsScreen
+import ar.edu.ort.parcialtp3grupo2.sections.explore.screens.SearchScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.account.screens.AccountScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.CategoriesScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.MyCartContent
@@ -30,6 +31,7 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues, isDa
                 innerPadding = innerPadding
             )
         }
+
         composable(AppDestination.Shop.route) {
            ShopScreen(innerPadding, navController)
         }
@@ -42,7 +44,7 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues, isDa
             AccountScreen(innerPadding, isDarkTheme = isDarkTheme, onThemeChange = onThemeChange)
         }
         composable(AppDestination.Explore.route) {
-            FindProductsScreen(innerPadding = innerPadding)
+            FindProductsScreen(innerPadding = innerPadding, navController)
         }
         composable(AppDestination.ProductDetail.route + "/{id}",
             arguments = listOf(navArgument(name = "id"){type = NavType.StringType})

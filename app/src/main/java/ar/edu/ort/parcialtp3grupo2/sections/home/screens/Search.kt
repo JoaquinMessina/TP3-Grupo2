@@ -18,37 +18,44 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.sections.explore.components.SearchInput
+import ar.edu.ort.parcialtp3grupo2.sections.home.data.Product
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.ProductRepository
 import ar.edu.ort.parcialtp3grupo2.ui.components.MyTopAppBar
 import ar.edu.ort.parcialtp3grupo2.ui.navigation.BottomBar
 
-
+@Preview
 @Composable
-fun SearchScreen(innerPadding: PaddingValues) {
-    val productRepository = ProductRepository()
-    val productsByCategory = productRepository.getByCategoryId(1);
+fun SearchScreen() {
+    val productRepository =  listOf(
+        Product(
+            id = "0",
+            categoryId = 1,
+            name = "Apple",
+            price = 3000.0,
+            amount = "1kg",
+            image = R.drawable.apple,
+            detail = "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet."
+        ),
+        Product(
+            id = "1",
+            name = "Sprite",
+            price = 3000.0,
+            amount = "330ml",
+            image = R.drawable.sprite,
+            detail = "Fresh and sweet, always a good choice (of course over seven up)",
+            categoryId = 6
+        )
+    )
     var text by remember { mutableStateOf("") }
     var isSheetOpen by remember {
         mutableStateOf(false)
     }
-    Scaffold(
-        topBar = {
-            MyTopAppBar(
-                title = "Search",
-                isArrowBack = false,
-                navController = null
-            )
-        },
-        bottomBar = {
-            BottomBar(currentRoute = "Explore") {
-            }
-        }
 
-    ) { paddingValues ->
         Column(
             modifier = Modifier
-                .padding(innerPadding)
+                .padding()
                 .fillMaxWidth()
         ) {
 
@@ -62,14 +69,13 @@ fun SearchScreen(innerPadding: PaddingValues) {
                 verticalArrangement = Arrangement.spacedBy(16.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 modifier = Modifier
-                    .padding(paddingValues)
+                    .padding()
                     .padding(16.dp)
                     .fillMaxSize()
             ) {
-                items(productsByCategory) { product ->
+                items(productRepository) { product ->
                     ProductCardCat(product = product)
                 }
             }
         }
     }
-}

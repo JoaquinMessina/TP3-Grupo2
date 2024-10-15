@@ -29,10 +29,7 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues) {
                 globalController = navController,
                 innerPadding = innerPadding
             )
-
-
         }
-
         composable(AppDestination.Shop.route) {
            ShopScreen(innerPadding, navController)
         }

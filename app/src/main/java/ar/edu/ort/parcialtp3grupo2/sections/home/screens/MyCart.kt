@@ -35,36 +35,16 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import ar.edu.ort.parcialtp3grupo2.sections.home.components.CheckoutBottomSheet
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.Product
 import ar.edu.ort.parcialtp3grupo2.sections.home.data.ProductRepository
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButtonRightText
-import ar.edu.ort.parcialtp3grupo2.ui.components.MyTopAppBar
-import ar.edu.ort.parcialtp3grupo2.ui.navigation.BottomBar
 
-@Preview
-@Composable
-fun MyCartScreen() {
-    Scaffold(
-        topBar = {
-            MyTopAppBar(
-                title = "My Cart",
-                isArrowBack = false,
-                navController = null
-            )
-        },
-        bottomBar = {
-            BottomBar(currentRoute = "Cart") {
-            }
-        }
-    ) { innerPadding ->
-        MyCartContent(modifier = Modifier.padding(innerPadding))
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyCartContent(modifier: Modifier = Modifier) {
+fun MyCartContent(innerPadding: PaddingValues, navController: NavController) {
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true )
     var isSheetopen by remember {
         mutableStateOf(false)
@@ -73,7 +53,8 @@ fun MyCartContent(modifier: Modifier = Modifier) {
     val cartItems = productRepository.getAllData()
 
     Column(
-        modifier = modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize()
+            .padding()
     ) {
         Divider(color = Color.LightGray, thickness = 0.7.dp)
         LazyColumn(
@@ -93,7 +74,6 @@ fun MyCartContent(modifier: Modifier = Modifier) {
         GreenButtonRightText(onClick = { isSheetopen = true }, text="Go to Checkout", rightText = "$1500")
         if(isSheetopen){
             CheckoutBottomSheet(onDismiss = { isSheetopen = false }, sheetState = sheetState)
-
         }
     }
 }
@@ -155,10 +135,4 @@ fun ProductRow(product: Product) {
                 .wrapContentWidth(Alignment.End)
         )
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyCartScreen()
 }

@@ -37,8 +37,7 @@ import ar.edu.ort.parcialtp3grupo2.sections.home.data.ProductRepository
 
 @Composable
 fun CategoriesScreen(innerPadding: PaddingValues) {
-    val productRepository = ProductRepository()
-    val productsByCategory =productRepository.getByCategoryId(1);
+    val productRepository = ProductRepository().getAllData()
 
     Scaffold(
         topBar = {
@@ -58,7 +57,7 @@ fun CategoriesScreen(innerPadding: PaddingValues) {
                 .padding(16.dp)
                 .fillMaxSize()
         ) {
-            items(productsByCategory) { product ->
+            items(productRepository) { product ->
                 ProductCardCat(product = product)
             }
         }

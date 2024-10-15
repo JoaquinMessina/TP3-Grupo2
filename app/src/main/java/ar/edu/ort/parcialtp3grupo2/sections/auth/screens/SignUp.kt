@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
 import ar.edu.ort.parcialtp3grupo2.R
+import ar.edu.ort.parcialtp3grupo2.sections.auth.components.AlertDialog
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.GenericTextField
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.PasswordTextField
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.ValidatedTextField
@@ -46,7 +47,9 @@ fun SignUp(
     val scrollState = rememberScrollState()
     var (email, setEmail) = remember { mutableStateOf("") }
     var validMail = email.contains("@gmail.com")
+    var (username, setUsername) = remember { mutableStateOf("") }
     var (password, setPassword) =  remember { mutableStateOf("") }
+    val shouldShowDialog = remember { mutableStateOf(false) }
 
     Box(
         modifier = Modifier
@@ -89,7 +92,7 @@ fun SignUp(
 
             Spacer(modifier = Modifier.height(30.dp))
 
-            GenericTextField(text = "Username", value = email, setValue = setEmail)
+            GenericTextField(text = "Username", value = username, setValue = setUsername)
 
             Spacer(modifier = Modifier.height(36.dp))
 
@@ -115,7 +118,7 @@ fun SignUp(
                     color = Color(0xFF53B175),
                     fontSize = 12.sp,
 
-                )
+                    )
 
             }
 
@@ -136,11 +139,20 @@ fun SignUp(
                     fontSize = 12.sp,)
             }
 
+            if (shouldShowDialog.value) {
+                AlertDialog(shouldShowDialog = shouldShowDialog, topText = "Wrong Email Address", message = "The Email Must Be a Google Domain: example@gmail.com")
+            }
+
 
 
             GreenButton(onClick = {
-                authController.navigate(AuthDestination.Login.route)
-                                  }, text = "Sign Up")
+                if (validMail){
+                    authController.navigate(AuthDestination.Login.route)
+                } else {
+                    shouldShowDialog.value = true
+                }
+
+            }, text = "Sign Up")
 
             Row {
                 Text(text = "Already have an account? ",
@@ -148,7 +160,7 @@ fun SignUp(
 
                 Text(text = "Sign in",
                     modifier = Modifier.clickable {
-                         authController.navigate(AuthDestination.Login.route)                    },
+                        authController.navigate(AuthDestination.Login.route)                    },
                     color = Color(0xFF53B175))
 
             }

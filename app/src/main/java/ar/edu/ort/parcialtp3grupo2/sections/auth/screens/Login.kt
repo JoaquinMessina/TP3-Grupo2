@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import ar.edu.ort.parcialtp3grupo2.R
+import ar.edu.ort.parcialtp3grupo2.sections.auth.components.AlertDialog
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.AuthViewModel
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.GenericTextField
 import ar.edu.ort.parcialtp3grupo2.sections.auth.components.PasswordTextField
@@ -45,12 +46,14 @@ fun Login(
     var (email, setEmail) = remember { mutableStateOf("") }
     var (password, setPassword) =  remember { mutableStateOf("") }
     val coroutineScope = rememberCoroutineScope()
+    val shouldShowDialog = remember { mutableStateOf(false) }
 
 
     Box(
         modifier = Modifier
             .padding(innerPadding)
             .fillMaxSize()
+            .background(Color.White)
     ) {
         Image(
             painter = painterResource(id = R.drawable.login_background),
@@ -98,6 +101,10 @@ fun Login(
                     .align(alignment = Alignment.End)
                     .padding(16.dp))
 
+            if (shouldShowDialog.value) {
+                AlertDialog(shouldShowDialog = shouldShowDialog, topText = "Wrong Credentials", message = "The Username or Password is Incorrect. Try again.")
+            }
+
 
             GreenButton(onClick = {
 
@@ -106,12 +113,13 @@ fun Login(
                     if(token != null) {
                         authNavhostController.navigate(AuthDestination.Location.route)
                     } else {
-                        /* TODO */
+                        shouldShowDialog.value = true
+
                     }
                 }
 
 
-                                  },
+            },
                 text = "Log In")
 
             Row {
@@ -120,7 +128,7 @@ fun Login(
 
                 Text(text = "Singup",
                     modifier = Modifier.clickable {
-                         authNavhostController.navigate(AuthDestination.Register.route)                    },
+                        authNavhostController.navigate(AuthDestination.Register.route)                    },
                     color = Color(0xFF53B175))
             }
 

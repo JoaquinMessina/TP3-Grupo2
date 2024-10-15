@@ -38,6 +38,7 @@ fun PasswordTextField(value: String, setValue: (String) -> Unit) {
         TextField(
             value = value,
             onValueChange = setValue,
+            singleLine = true,
             //label = { Text(text = "Password") },
             visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),

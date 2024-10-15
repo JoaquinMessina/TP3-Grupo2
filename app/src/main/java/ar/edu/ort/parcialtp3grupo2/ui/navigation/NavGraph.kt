@@ -51,7 +51,7 @@ fun NavGraph(navController: NavHostController, innerPadding: PaddingValues, isDa
           ProductDetailScreen(innerPadding = innerPadding, id)
         }
         composable(AppDestination.OrderAccepted.route) {
-            OrderAcceptedScreen(innerPadding = innerPadding)
+            OrderAcceptedScreen(innerPadding = innerPadding, navController)
         }
         composable(AppDestination.Categories.route) {
             CategoriesScreen(innerPadding = innerPadding)

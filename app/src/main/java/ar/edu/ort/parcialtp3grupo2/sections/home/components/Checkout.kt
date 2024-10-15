@@ -28,26 +28,29 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButtonRightText
+import ar.edu.ort.parcialtp3grupo2.ui.navigation.AppDestination
 
 @Composable
 fun CheckoutBottomSheet(
     onDismiss: () -> Unit,
-    sheetState: SheetState
+    sheetState: SheetState,
+    navController: NavController
 ) {
     ModalBottomSheet(
         sheetState = sheetState,
         onDismissRequest = { onDismiss() },
         dragHandle = {false}
     ) {
-        CheckboxBottomSheetContent(onDismiss)
+        CheckboxBottomSheetContent(onDismiss, navController)
     }
 }
 
 
 @Composable
-fun CheckboxBottomSheetContent(onDismiss: () -> Unit) {
+fun CheckboxBottomSheetContent(onDismiss: () -> Unit, navController: NavController) {
     Column (verticalArrangement = Arrangement.SpaceBetween){
         Column (
             modifier = Modifier
@@ -106,7 +109,7 @@ fun CheckboxBottomSheetContent(onDismiss: () -> Unit) {
                 color = Color.Gray
             )
         }
-        GreenButtonRightText(onClick = { /*TODO*/ }, text = "Place Order")
+        GreenButtonRightText(onClick = { navController.navigate(AppDestination.OrderAccepted.route) }, text = "Place Order")
     }
 
 

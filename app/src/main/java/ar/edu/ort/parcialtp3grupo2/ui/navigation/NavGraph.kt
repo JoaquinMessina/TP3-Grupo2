@@ -10,6 +10,7 @@ import androidx.navigation.navArgument
 import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.sections.auth.navigation.AuthNavGraph
 import ar.edu.ort.parcialtp3grupo2.sections.explore.screens.FindProductsScreen
+import ar.edu.ort.parcialtp3grupo2.sections.explore.screens.SearchScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.account.screens.AccountScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.CategoriesScreen
 import ar.edu.ort.parcialtp3grupo2.sections.home.screens.MyCartContent

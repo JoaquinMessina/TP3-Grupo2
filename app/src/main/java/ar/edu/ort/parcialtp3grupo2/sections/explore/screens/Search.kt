@@ -26,7 +26,6 @@ import ar.edu.ort.parcialtp3grupo2.sections.home.screens.ProductCardCat
 fun SearchScreen(
     text: String,
     onTextChange: (String) -> Unit
-
 ) {
     val productRepository = ProductRepository()
     val cartItems = productRepository.getAllData()

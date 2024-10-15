@@ -75,11 +75,8 @@ fun MyCartContent(innerPadding: PaddingValues, navController: NavController) {
                 }
             }
         }
-
         Spacer(modifier = Modifier.height(16.dp))
-
         GreenButtonRightText(onClick = { isSheetopen = true }, text = "Go to Checkout", rightText = "$1500")
-
         if (isSheetopen) {
             CheckoutBottomSheet(onDismiss = { isSheetopen = false }, sheetState = sheetState)
         }

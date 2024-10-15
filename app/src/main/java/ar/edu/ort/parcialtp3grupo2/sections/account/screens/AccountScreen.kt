@@ -45,7 +45,7 @@ import ar.edu.ort.parcialtp3grupo2.R
 import ar.edu.ort.parcialtp3grupo2.ui.components.GreenButton
 
 @Composable
-fun AccountScreen(innerPadding: PaddingValues,navController: NavController) {
+fun AccountScreen(innerPadding: PaddingValues) {
 
     Column(
         modifier = Modifier
@@ -166,11 +166,4 @@ fun DarkModeItem (){
             })
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun test(){
-    AccountScreen(innerPadding = PaddingValues(), navController = rememberNavController()
-    )
 }
